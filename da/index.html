@@ -33,8 +33,19 @@ p{margin:0}
 
 /* hero */
 .hero{position:relative;min-height:min(86vh,820px);display:grid;align-items:end;overflow:hidden}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,20,15,.15) 0%,rgba(23,20,15,.25) 45%,rgba(23,20,15,.95) 100%)}
+.hero-track{position:absolute;inset:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.hero-track::-webkit-scrollbar{display:none}
+.hero-track img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;scroll-snap-stop:always;user-select:none;-webkit-user-drag:none}
+.hnav{position:absolute;z-index:3;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:999px;border:1px solid rgba(236,229,216,.35);background:rgba(23,20,15,.55);color:var(--fg);font-size:1.5rem;cursor:pointer;display:grid;place-items:center}
+.hnav:hover{border-color:var(--brass);color:var(--brass)}
+.hprev{left:max(16px,env(safe-area-inset-left,0px))}.hnext{right:max(16px,env(safe-area-inset-right,0px))}
+.hcount{position:absolute;z-index:3;right:max(16px,env(safe-area-inset-right,0px));bottom:20px;font:500 .75rem var(--mono);letter-spacing:.08em;background:rgba(23,20,15,.6);padding:5px 10px;border-radius:999px;font-variant-numeric:tabular-nums}
+.hdots{position:absolute;z-index:3;left:50%;transform:translateX(-50%);bottom:22px;display:flex;gap:6px}
+.hdots i{width:6px;height:6px;border-radius:50%;background:rgba(236,229,216,.4)}
+.hdots i.on{background:var(--fg)}
+.hero .inner{pointer-events:none}.hero .inner a{pointer-events:auto}
+@media (max-width:600px){.hnav{display:none}.hdots{display:none}.hcount{top:calc(env(safe-area-inset-top,0px) + 74px);bottom:auto}}
+.hero::after{pointer-events:none;content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,20,15,.15) 0%,rgba(23,20,15,.25) 45%,rgba(23,20,15,.95) 100%)}
 .hero .inner{position:relative;z-index:1;padding-block:0 56px;display:grid;gap:18px;width:100%}
 .hero h1{font-size:clamp(2.6rem,8vw,5.6rem);max-width:12ch}
 .hero .lede{font-size:1.15rem;max-width:46ch;color:#e6dccb}
@@ -235,7 +246,21 @@ section,header.hero{scroll-margin-top:70px}
   </div>
 </nav>
 <header class="hero" id="top">
-  <img src="../img/kjokken-oy.jpg" alt="Køkken med grøn køkkenø, tømmerstolper og læderlænestole i forgrunden">
+  <div class="hero-track" id="heroTrack">
+    <img src="../img/kjokken-oy.jpg" alt="Køkken med grøn køkkenø, tømmerstolper og læderlænestole i forgrunden" draggable="false">
+    <img src="../img/tun-vinter.jpg" alt="Gårdspladsen med garage og hytten en klar vinterdag" loading="lazy" draggable="false">
+    <img src="../img/spisestue-peis.jpg" alt="Spisestue og TV-krog" loading="lazy" draggable="false">
+    <img src="../img/salong.jpg" alt="Hyggekrog ved køkkenet" loading="lazy" draggable="false">
+    <img src="../img/biljard.jpg" alt="Stue med billardbord og TV-krog" loading="lazy" draggable="false">
+    <img src="../img/ute-sommer.jpg" alt="Hytten med græstag og terrasse i sensommeren, udsigt over dalen" loading="lazy" draggable="false">
+    <img src="../img/soverom-a.jpg" alt="Soveværelse med seng, ternet hovedgærde og vindue" loading="lazy" draggable="false">
+    <img src="../img/hems-sovesal.jpg" alt="Soveværelse på hemsen med alkovesenge langs væggen" loading="lazy" draggable="false">
+    <img src="../img/tun-solnedgang.jpg" alt="Gårdspladsen i aftensol" loading="lazy" draggable="false">
+  </div>
+  <button type="button" class="hnav hprev" id="hPrev" aria-label="Forrige billede">‹</button>
+  <button type="button" class="hnav hnext" id="hNext" aria-label="Næste billede">›</button>
+  <div class="hdots" id="hDots" aria-hidden="true"></div>
+  <span class="hcount" id="hCount">1 / 9</span>
   <div class="inner gut">
     <span class="label">Øyer · Gudbrandsdalen · Til leje</span>
     <h1>Centralt på Hafjell Panorama</h1>
@@ -631,9 +656,9 @@ const PHOTOS=[
   ["kjokken-oy","Køkken med stor køkkenø","g-g"],
 ];
 const PLANS=[["plan-hovedetasje","Plantegning, stueetage"],["plan-hems","Plantegning, hems"]];
-const g=document.getElementById("gallery");if(g)
+const g=document.getElementById("gallery");
 let list=PHOTOS, idx=0, lastFocus=null;
-PHOTOS.forEach(([f,c,cls],i)=>{
+if(g)PHOTOS.forEach(([f,c,cls],i)=>{
   const b=document.createElement("button");b.type="button";b.className=cls;b.setAttribute("aria-label","Vis større: "+c);
   const im=document.createElement("img");im.src="../img/"+f+".jpg";im.alt=c;im.loading="lazy";b.append(im);
   b.onclick=()=>openLb(PHOTOS,i);g.append(b);
@@ -662,6 +687,19 @@ document.getElementById("planbtn").onclick=()=>openLb([PLANS[plan]],0);
 (function(){const t=document.getElementById("tnToggle"),l=document.getElementById("tnLinks");if(!t)return;
 t.onclick=()=>{const o=l.classList.toggle("open");t.setAttribute("aria-expanded",o)};
 l.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{l.classList.remove("open");t.setAttribute("aria-expanded","false")}));})();
+</script>
+<script>
+(function(){const t=document.getElementById("heroTrack");if(!t)return;
+const n=t.children.length,c=document.getElementById("hCount"),d=document.getElementById("hDots");
+for(let i=0;i<n;i++)d.append(document.createElement("i"));
+const cur=()=>Math.round(t.scrollLeft/t.clientWidth);
+const go=i=>t.scrollTo({left:((i+n)%n)*t.clientWidth,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});
+let raf;function upd(){const i=cur();c.textContent=(i+1)+" / "+n;[...d.children].forEach((e,j)=>e.classList.toggle("on",j===i))}
+t.addEventListener("scroll",()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(upd)},{passive:true});
+document.getElementById("hPrev").onclick=()=>go(cur()-1);
+document.getElementById("hNext").onclick=()=>go(cur()+1);
+t.tabIndex=0;t.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")go(cur()-1);if(e.key==="ArrowRight")go(cur()+1)});
+upd();})();
 </script>
 </body>
 </html>
