@@ -191,6 +191,27 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
 .rbtns{display:flex;gap:8px;flex-wrap:wrap}
 @media (max-width:860px){.booking{grid-template-columns:1fr}}
 @media (max-width:420px){.row2{grid-template-columns:1fr}}
+.topnav{position:sticky;top:0;z-index:40;background:rgba(23,20,15,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.tn-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:18px;min-height:58px}
+.brand{font:400 1.15rem var(--display);color:var(--fg);text-decoration:none;white-space:nowrap;margin-right:auto}
+.tn-links{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.tn-links>a{color:#d7cfbf;text-decoration:none;font-size:.92rem;padding:8px 10px;border-radius:999px}
+.tn-links>a:hover{color:var(--fg);background:var(--bg-2)}
+.tn-links>a.tn-cta{background:var(--brass);color:#1b150c;font-weight:700;padding:8px 14px;margin-left:6px}
+.tn-links .lang{margin-left:8px}
+.tn-links .lang a{background:none}
+.tn-toggle{display:none;background:none;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:7px 14px;font:500 .78rem var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+section,header.hero{scroll-margin-top:70px}
+.bedpics{grid-template-columns:repeat(2,1fr)!important}
+.bedpics img{aspect-ratio:3/2!important}
+@media (max-width:980px){
+  .tn-toggle{display:block}
+  .tn-links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:2px;background:var(--bg);border-bottom:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+  .tn-links.open{display:flex}
+  .tn-links>a{padding:12px 10px;font-size:1rem}
+  .tn-links>a.tn-cta{margin:8px 0 0;text-align:center}
+  .tn-links .lang{margin:10px 0 0;justify-content:center}
+}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gallery img{transition:none}}
 .lang{display:flex;gap:4px;font:500 .72rem var(--mono);letter-spacing:.1em}.lang a{color:var(--fg);text-decoration:none;padding:6px 9px;border:1px solid transparent;border-radius:999px;background:rgba(23,20,15,.55)}.lang a:hover{border-color:var(--brass)}.lang a[aria-current="page"]{border-color:var(--sage);color:var(--sage)}@media (max-width:480px){header.gut h1{display:none}}.hero .lang{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(16px,env(safe-area-inset-right,0px))}
 </style>
@@ -202,8 +223,18 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
 <body>
 
 
-<header class="hero">
-  <nav class="lang" aria-label="Språk / Language"><a href="../" hreflang="no" lang="no">NO</a><a href="../en/" hreflang="en" lang="en" aria-current="page">EN</a><a href="../da/" hreflang="da" lang="da">DA</a></nav>
+<nav class="topnav" id="topnav" aria-label="Main menu">
+  <div class="tn-inner gut">
+    <a class="brand" href="#top">Hafjell Panorama</a>
+    <button type="button" class="tn-toggle" id="tnToggle" aria-expanded="false" aria-controls="tnLinks">Menu</button>
+    <div class="tn-links" id="tnLinks">
+      <a href="#om">About</a><a href="#rom">Rooms</a><a href="#fasiliteter">Amenities</a><a href="#beliggenhet">Location</a><a href="#praktisk">Prices</a><a href="bilder.html">Photos</a>
+      <a class="tn-cta" href="#forespørsel">Availability</a>
+      <nav class="lang" aria-label="Språk / Language"><a href="../" hreflang="no" lang="no">NO</a><a href="../en/" hreflang="en" lang="en" aria-current="page">EN</a><a href="../da/" hreflang="da" lang="da">DA</a></nav>
+    </div>
+  </div>
+</nav>
+<header class="hero" id="top">
   <img src="../img/kjokken-oy.jpg" alt="Kitchen with a green kitchen island, log pillars and leather armchairs in the foreground">
   <div class="inner gut">
     <span class="label">Øyer · Gudbrandsdalen · For rent</span>
@@ -234,7 +265,7 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
         <p>Welcome to a large and inviting cabin built in 2000, approx. 130 m² (+ a loft of approx. 30 m²), in an attractive location with lovely views over the mountains. The cabin has a well-planned layout with plenty of room for family and guests.</p>
         <p>You get no fewer than 7 bedrooms, 4 of them on a practical loft, plus a garage.</p>
       </div>
-      <div class="photo"><img src="../img/eksterior.jpg" alt="The cabin from outside in summer, with turf roof, stone facade and terrace" loading="lazy"></div>
+      <div class="photo"><img src="../img/ute-host.jpg" alt="The cabin and garage seen from below in autumn" loading="lazy"></div>
     </div>
     <div class="hl">
       <div><span class="label">Kitchen</span><h3>Gather round the island</h3><p>A modern kitchen that flows naturally into the living and dining areas. Perfect for getting together after a day in the mountains.</p></div>
@@ -256,14 +287,6 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
       <div class="photo"><img src="../img/biljard-stue.jpg" alt="Pool table in front of the sofa, wood stove and stairs to the loft" loading="lazy"></div>
       <div class="photo"><img src="../img/spisestue.jpg" alt="Dining table with leather chairs, wood stove and sofa" loading="lazy"></div>
     </div>
-  </div>
-</section>
-
-<section class="gut" id="bilder" style="padding-top:0">
-  <div class="inner">
-    <span class="label">Photos</span>
-    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-top:12px"><h2>Take a look around</h2><a href="bilder.html">Browse all photos →</a></div>
-    <div class="gallery" id="gallery"></div>
   </div>
 </section>
 
@@ -302,9 +325,7 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
     </div>
     <div class="bedpics">
       <figure><img src="../img/soverom-a.jpg" alt="Bedroom with bed, checked headboard and window" loading="lazy"><figcaption>Bedroom on the main floor</figcaption></figure>
-      <figure><img src="../img/soverom-b.jpg" alt="Bedroom with double bed and warm lamps" loading="lazy"><figcaption>Bedroom on the main floor</figcaption></figure>
       <figure><img src="../img/hems-sovesal.jpg" alt="Loft bedroom with built-in alcove beds along the wall" loading="lazy"><figcaption>Alcove beds on the loft</figcaption></figure>
-      <figure><img src="../img/hems-soverom-lys.jpg" alt="Bright loft bedroom with alcove bed" loading="lazy"><figcaption>Loft bedroom</figcaption></figure>
     </div>
   </div>
 </section>
@@ -344,9 +365,6 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
       <figure class="s-big"><img src="../img/tun-vinter.jpg" alt="The yard with garage and cabin on a clear winter day" loading="lazy"><figcaption>A clear winter day</figcaption></figure>
       <figure><img src="../img/ute-sommer.jpg" alt="The cabin with turf roof and terrace in late summer, view over the valley" loading="lazy"><figcaption>Late summer with views over the valley</figcaption></figure>
       <figure><img src="../img/tun-solnedgang.jpg" alt="The yard in the evening sun" loading="lazy"><figcaption>Evening sun over the yard</figcaption></figure>
-      <figure><img src="../img/ute-vinter.jpg" alt="The cabin in deep snow" loading="lazy"><figcaption>Plenty of snow in winter</figcaption></figure>
-      <figure><img src="../img/ute-host.jpg" alt="The cabin and garage seen from below in autumn" loading="lazy"><figcaption>Autumn on the hillside</figcaption></figure>
-      <figure><img src="../img/tun-forste-sno.jpg" alt="First snow in the yard" loading="lazy"><figcaption>First snow in the yard</figcaption></figure>
     </div>
   </div>
 </section>
@@ -362,9 +380,8 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
       <div class="near"><span>Ski resort</span><span>Ski trails</span><span>Hiking</span><span>Golf</span><span>Restaurant</span><span>Grocery store</span><span>Town</span></div>
       <figure class="map"><img src="../img/loypekart.jpg" alt="Hafjell trail map with an arrow showing where the cabin is" loading="lazy"><figcaption>Trail map: the arrow shows where the cabin is, with the ski trails right next to it.</figcaption></figure>
     </div>
-    <div class="pair">
+    <div>
       <div class="photo"><img src="../img/flyfoto-sommer.jpg" alt="Aerial photo of Hafjell Panorama in summer, the cabin marked" loading="lazy"></div>
-      <div class="photo"><img src="../img/flyfoto-vinter.jpg" alt="Aerial photo in winter looking towards Gudbrandsdalen and the river Lågen, the cabin marked" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -614,7 +631,7 @@ const PHOTOS=[
   ["kjokken-oy","Kitchen with large island","g-g"],
 ];
 const PLANS=[["plan-hovedetasje","Floor plan, main floor"],["plan-hems","Floor plan, loft"]];
-const g=document.getElementById("gallery");
+const g=document.getElementById("gallery");if(g)
 let list=PHOTOS, idx=0, lastFocus=null;
 PHOTOS.forEach(([f,c,cls],i)=>{
   const b=document.createElement("button");b.type="button";b.className=cls;b.setAttribute("aria-label","Show larger: "+c);
@@ -641,5 +658,10 @@ document.querySelectorAll(".tabs button").forEach(t=>t.onclick=()=>{
 document.getElementById("planbtn").onclick=()=>openLb([PLANS[plan]],0);
 </script>
 
+<script>
+(function(){const t=document.getElementById("tnToggle"),l=document.getElementById("tnLinks");if(!t)return;
+t.onclick=()=>{const o=l.classList.toggle("open");t.setAttribute("aria-expanded",o)};
+l.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{l.classList.remove("open");t.setAttribute("aria-expanded","false")}));})();
+</script>
 </body>
 </html>

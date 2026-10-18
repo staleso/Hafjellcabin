@@ -191,6 +191,27 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
 .rbtns{display:flex;gap:8px;flex-wrap:wrap}
 @media (max-width:860px){.booking{grid-template-columns:1fr}}
 @media (max-width:420px){.row2{grid-template-columns:1fr}}
+.topnav{position:sticky;top:0;z-index:40;background:rgba(23,20,15,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.tn-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:18px;min-height:58px}
+.brand{font:400 1.15rem var(--display);color:var(--fg);text-decoration:none;white-space:nowrap;margin-right:auto}
+.tn-links{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.tn-links>a{color:#d7cfbf;text-decoration:none;font-size:.92rem;padding:8px 10px;border-radius:999px}
+.tn-links>a:hover{color:var(--fg);background:var(--bg-2)}
+.tn-links>a.tn-cta{background:var(--brass);color:#1b150c;font-weight:700;padding:8px 14px;margin-left:6px}
+.tn-links .lang{margin-left:8px}
+.tn-links .lang a{background:none}
+.tn-toggle{display:none;background:none;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:7px 14px;font:500 .78rem var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+section,header.hero{scroll-margin-top:70px}
+.bedpics{grid-template-columns:repeat(2,1fr)!important}
+.bedpics img{aspect-ratio:3/2!important}
+@media (max-width:980px){
+  .tn-toggle{display:block}
+  .tn-links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:2px;background:var(--bg);border-bottom:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+  .tn-links.open{display:flex}
+  .tn-links>a{padding:12px 10px;font-size:1rem}
+  .tn-links>a.tn-cta{margin:8px 0 0;text-align:center}
+  .tn-links .lang{margin:10px 0 0;justify-content:center}
+}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gallery img{transition:none}}
 .lang{display:flex;gap:4px;font:500 .72rem var(--mono);letter-spacing:.1em}.lang a{color:var(--fg);text-decoration:none;padding:6px 9px;border:1px solid transparent;border-radius:999px;background:rgba(23,20,15,.55)}.lang a:hover{border-color:var(--brass)}.lang a[aria-current="page"]{border-color:var(--sage);color:var(--sage)}@media (max-width:480px){header.gut h1{display:none}}.hero .lang{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(16px,env(safe-area-inset-right,0px))}
 </style>
@@ -202,8 +223,18 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
 <body>
 
 
-<header class="hero">
-  <nav class="lang" aria-label="Språk / Language"><a href="./" hreflang="no" lang="no" aria-current="page">NO</a><a href="en/" hreflang="en" lang="en">EN</a><a href="da/" hreflang="da" lang="da">DA</a></nav>
+<nav class="topnav" id="topnav" aria-label="Hovedmeny">
+  <div class="tn-inner gut">
+    <a class="brand" href="#top">Hafjell Panorama</a>
+    <button type="button" class="tn-toggle" id="tnToggle" aria-expanded="false" aria-controls="tnLinks">Meny</button>
+    <div class="tn-links" id="tnLinks">
+      <a href="#om">Om hytta</a><a href="#rom">Rom</a><a href="#fasiliteter">Fasiliteter</a><a href="#beliggenhet">Beliggenhet</a><a href="#praktisk">Priser</a><a href="bilder.html">Bilder</a>
+      <a class="tn-cta" href="#forespørsel">Ledige datoer</a>
+      <nav class="lang" aria-label="Språk / Language"><a href="./" hreflang="no" lang="no" aria-current="page">NO</a><a href="en/" hreflang="en" lang="en">EN</a><a href="da/" hreflang="da" lang="da">DA</a></nav>
+    </div>
+  </div>
+</nav>
+<header class="hero" id="top">
   <img src="img/kjokken-oy.jpg" alt="Kjøkken med grønn kjøkkenøy, tømmerstolper og skinnstoler i forgrunnen">
   <div class="inner gut">
     <span class="label">Øyer · Gudbrandsdalen · Leie</span>
@@ -234,7 +265,7 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
         <p>Velkommen til en stor og innbydende hytte fra år 2000 på ca. 130 m² (+ hems ca. 30 m²) med attraktiv beliggenhet og nydelig utsikt over fjellandskapet. Hytta har en gjennomtenkt planløsning med god plass til både familie og gjester.</p>
         <p>Her får du hele 7 soverom, hvorav 4 på praktisk hems, samt garasje.</p>
       </div>
-      <div class="photo"><img src="img/eksterior.jpg" alt="Hytta sett utenfra om sommeren, med torvtak, steinfasade og terrasse" loading="lazy"></div>
+      <div class="photo"><img src="img/ute-host.jpg" alt="Hytta og garasjen sett nedenfra om høsten" loading="lazy"></div>
     </div>
     <div class="hl">
       <div><span class="label">Kjøkken</span><h3>Samles rundt øya</h3><p>Et moderne kjøkken som ligger naturlig tilknyttet stue og spiseplass. Perfekt for sosiale samlinger etter en dag ute i fjellet.</p></div>
@@ -256,14 +287,6 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
       <div class="photo"><img src="img/biljard-stue.jpg" alt="Biljardbord foran sofa, peis og trapp til hems" loading="lazy"></div>
       <div class="photo"><img src="img/spisestue.jpg" alt="Spisebord med skinnstoler, peis og sofa" loading="lazy"></div>
     </div>
-  </div>
-</section>
-
-<section class="gut" id="bilder" style="padding-top:0">
-  <div class="inner">
-    <span class="label">Bilder</span>
-    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-top:12px"><h2>Ta en titt rundt</h2><a href="bilder.html">Bla gjennom alle bildene →</a></div>
-    <div class="gallery" id="gallery"></div>
   </div>
 </section>
 
@@ -302,9 +325,7 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
     </div>
     <div class="bedpics">
       <figure><img src="img/soverom-a.jpg" alt="Soverom med seng, rutete hodegavl og vindu" loading="lazy"><figcaption>Soverom i hovedetasjen</figcaption></figure>
-      <figure><img src="img/soverom-b.jpg" alt="Soverom med dobbeltseng og lune lamper" loading="lazy"><figcaption>Soverom i hovedetasjen</figcaption></figure>
       <figure><img src="img/hems-sovesal.jpg" alt="Soverom på hemsen med alkovesenger langs veggen" loading="lazy"><figcaption>Alkovesenger på hemsen</figcaption></figure>
-      <figure><img src="img/hems-soverom-lys.jpg" alt="Lyst soverom på hemsen med alkoveseng" loading="lazy"><figcaption>Soverom på hemsen</figcaption></figure>
     </div>
   </div>
 </section>
@@ -344,9 +365,6 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
       <figure class="s-big"><img src="img/tun-vinter.jpg" alt="Tunet med garasje og hytta en klar vinterdag" loading="lazy"><figcaption>Tunet en klar vinterdag</figcaption></figure>
       <figure><img src="img/ute-sommer.jpg" alt="Hytta med torvtak og terrasse om sensommeren, utsikt over dalen" loading="lazy"><figcaption>Sensommer med utsikt over dalen</figcaption></figure>
       <figure><img src="img/tun-solnedgang.jpg" alt="Tunet i kveldssol" loading="lazy"><figcaption>Kveldssol over tunet</figcaption></figure>
-      <figure><img src="img/ute-vinter.jpg" alt="Hytta i dyp snø" loading="lazy"><figcaption>Snørik vinter</figcaption></figure>
-      <figure><img src="img/ute-host.jpg" alt="Hytta og garasjen sett nedenfra om høsten" loading="lazy"><figcaption>Høst i lia</figcaption></figure>
-      <figure><img src="img/tun-forste-sno.jpg" alt="Første snøen på tunet" loading="lazy"><figcaption>Første snøen på tunet</figcaption></figure>
     </div>
   </div>
 </section>
@@ -362,9 +380,8 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
       <div class="near"><span>Alpinanlegg</span><span>Skiløyper</span><span>Turterreng</span><span>Golf</span><span>Restaurant</span><span>Matbutikk</span><span>Tettsted</span></div>
       <figure class="map"><img src="img/loypekart.jpg" alt="Løypekart for Hafjell med pil som viser hvor hytta ligger" loading="lazy"><figcaption>Løypekart: pilen viser hvor hytta ligger, med skiløypene rett ved.</figcaption></figure>
     </div>
-    <div class="pair">
+    <div>
       <div class="photo"><img src="img/flyfoto-sommer.jpg" alt="Flyfoto av hyttefeltet på Hafjell Panorama om sommeren, hytta markert" loading="lazy"></div>
-      <div class="photo"><img src="img/flyfoto-vinter.jpg" alt="Flyfoto om vinteren med utsikt mot Gudbrandsdalen og Lågen, hytta markert" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -614,7 +631,7 @@ const PHOTOS=[
   ["kjokken-oy","Kjøkken med stor kjøkkenøy","g-g"],
 ];
 const PLANS=[["plan-hovedetasje","Plantegning hovedetasje"],["plan-hems","Plantegning hems"]];
-const g=document.getElementById("gallery");
+const g=document.getElementById("gallery");if(g)
 let list=PHOTOS, idx=0, lastFocus=null;
 PHOTOS.forEach(([f,c,cls],i)=>{
   const b=document.createElement("button");b.type="button";b.className=cls;b.setAttribute("aria-label","Vis større: "+c);
@@ -641,5 +658,10 @@ document.querySelectorAll(".tabs button").forEach(t=>t.onclick=()=>{
 document.getElementById("planbtn").onclick=()=>openLb([PLANS[plan]],0);
 </script>
 
+<script>
+(function(){const t=document.getElementById("tnToggle"),l=document.getElementById("tnLinks");if(!t)return;
+t.onclick=()=>{const o=l.classList.toggle("open");t.setAttribute("aria-expanded",o)};
+l.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{l.classList.remove("open");t.setAttribute("aria-expanded","false")}));})();
+</script>
 </body>
 </html>
