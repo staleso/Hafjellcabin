@@ -145,6 +145,16 @@ footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px sol
 .contact a{font-size:1.05rem;overflow-wrap:anywhere}
 footer a{color:var(--muted)}
 .plannote{font-size:.92rem;color:var(--fg);border-left:2px solid var(--brass);padding-left:12px}
+figure{margin:0}
+figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);padding-top:8px}
+.bedpics{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.bedpics img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:3px}
+.seasons{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.seasons img{width:100%;object-fit:cover;border-radius:3px;aspect-ratio:4/3}
+.seasons .s-big{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column}
+.seasons .s-big img{aspect-ratio:auto;height:0;flex:1 1 auto;min-height:240px}
+.map img{border-radius:3px;width:100%}
+@media (max-width:860px){.bedpics{grid-template-columns:repeat(2,1fr)}.seasons{grid-template-columns:1fr 1fr}.seasons .s-big{grid-column:1/-1;grid-row:auto}.seasons .s-big img{aspect-ratio:4/3;height:auto;flex:none;min-height:0}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gallery img{transition:none}}
 .lang{display:flex;gap:4px;font:500 .72rem var(--mono);letter-spacing:.1em}.lang a{color:var(--fg);text-decoration:none;padding:6px 9px;border:1px solid transparent;border-radius:999px;background:rgba(23,20,15,.55)}.lang a:hover{border-color:var(--brass)}.lang a[aria-current="page"]{border-color:var(--sage);color:var(--sage)}@media (max-width:480px){header.gut h1{display:none}}.hero .lang{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(16px,env(safe-area-inset-right,0px))}
 </style>
@@ -253,6 +263,12 @@ footer a{color:var(--muted)}
       <p class="plannote">Merk: Plantegningen er eldre og viser to kjøkken. I dag har hytta <b>ett kjøkken</b>, <b>to TV-stuer</b> og <b>stue med biljardbord</b>.</p>
       <p class="fine">Plantegningen er ikke målbar, og møblene er ikke basert på den faktiske innredningen.</p>
     </div>
+    <div class="bedpics">
+      <figure><img src="img/soverom-a.jpg" alt="Soverom med seng, rutete hodegavl og vindu" loading="lazy"><figcaption>Soverom i hovedetasjen</figcaption></figure>
+      <figure><img src="img/soverom-b.jpg" alt="Soverom med dobbeltseng og lune lamper" loading="lazy"><figcaption>Soverom i hovedetasjen</figcaption></figure>
+      <figure><img src="img/hems-sovesal.jpg" alt="Soverom på hemsen med alkovesenger langs veggen" loading="lazy"><figcaption>Alkovesenger på hemsen</figcaption></figure>
+      <figure><img src="img/hems-soverom-lys.jpg" alt="Lyst soverom på hemsen med alkoveseng" loading="lazy"><figcaption>Soverom på hemsen</figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -283,6 +299,21 @@ footer a{color:var(--muted)}
   </div>
 </section>
 
+<section class="gut" id="arstider">
+  <div class="inner">
+    <span class="label">Sommer og vinter</span>
+    <h2 style="margin-top:12px">Et tun for alle årstider</h2>
+    <div class="seasons">
+      <figure class="s-big"><img src="img/tun-vinter.jpg" alt="Tunet med garasje og hytta en klar vinterdag" loading="lazy"><figcaption>Tunet en klar vinterdag</figcaption></figure>
+      <figure><img src="img/ute-sommer.jpg" alt="Hytta med torvtak og terrasse om sensommeren, utsikt over dalen" loading="lazy"><figcaption>Sensommer med utsikt over dalen</figcaption></figure>
+      <figure><img src="img/tun-solnedgang.jpg" alt="Tunet i kveldssol" loading="lazy"><figcaption>Kveldssol over tunet</figcaption></figure>
+      <figure><img src="img/ute-vinter.jpg" alt="Hytta i dyp snø" loading="lazy"><figcaption>Snørik vinter</figcaption></figure>
+      <figure><img src="img/ute-host.jpg" alt="Hytta og garasjen sett nedenfra om høsten" loading="lazy"><figcaption>Høst i lia</figcaption></figure>
+      <figure><img src="img/tun-forste-sno.jpg" alt="Første snøen på tunet" loading="lazy"><figcaption>Første snøen på tunet</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <section class="gut" id="beliggenhet" style="padding-top:0">
   <div class="inner split">
     <div class="copy">
@@ -292,6 +323,7 @@ footer a{color:var(--muted)}
       <p>Om sommeren åpner området seg for sykkelturer i variert terreng, flotte stier og naturopplevelser for hele familien. Hafjell Golf er en av landets mest naturskjønne golfbaner, og vakre fjellområder for toppturer ligger kort unna.</p>
       <div class="dist"><b>20 min</b><span>med bil til Lillehammer: restauranter, shopping og kultur</span></div>
       <div class="near"><span>Alpinanlegg</span><span>Skiløyper</span><span>Turterreng</span><span>Golf</span><span>Restaurant</span><span>Matbutikk</span><span>Tettsted</span></div>
+      <figure class="map"><img src="img/loypekart.jpg" alt="Løypekart for Hafjell med pil som viser hvor hytta ligger" loading="lazy"><figcaption>Løypekart: pilen viser hvor hytta ligger, med skiløypene rett ved.</figcaption></figure>
     </div>
     <div class="pair">
       <div class="photo"><img src="img/flyfoto-sommer.jpg" alt="Flyfoto av hyttefeltet på Hafjell Panorama om sommeren, hytta markert" loading="lazy"></div>

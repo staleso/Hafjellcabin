@@ -145,6 +145,16 @@ footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px sol
 .contact a{font-size:1.05rem;overflow-wrap:anywhere}
 footer a{color:var(--muted)}
 .plannote{font-size:.92rem;color:var(--fg);border-left:2px solid var(--brass);padding-left:12px}
+figure{margin:0}
+figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);padding-top:8px}
+.bedpics{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.bedpics img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:3px}
+.seasons{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.seasons img{width:100%;object-fit:cover;border-radius:3px;aspect-ratio:4/3}
+.seasons .s-big{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column}
+.seasons .s-big img{aspect-ratio:auto;height:0;flex:1 1 auto;min-height:240px}
+.map img{border-radius:3px;width:100%}
+@media (max-width:860px){.bedpics{grid-template-columns:repeat(2,1fr)}.seasons{grid-template-columns:1fr 1fr}.seasons .s-big{grid-column:1/-1;grid-row:auto}.seasons .s-big img{aspect-ratio:4/3;height:auto;flex:none;min-height:0}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gallery img{transition:none}}
 .lang{display:flex;gap:4px;font:500 .72rem var(--mono);letter-spacing:.1em}.lang a{color:var(--fg);text-decoration:none;padding:6px 9px;border:1px solid transparent;border-radius:999px;background:rgba(23,20,15,.55)}.lang a:hover{border-color:var(--brass)}.lang a[aria-current="page"]{border-color:var(--sage);color:var(--sage)}@media (max-width:480px){header.gut h1{display:none}}.hero .lang{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(16px,env(safe-area-inset-right,0px))}
 </style>
@@ -253,6 +263,12 @@ footer a{color:var(--muted)}
       <p class="plannote">Note: The floor plan is older and shows two kitchens. Today the cabin has <b>one kitchen</b>, <b>two TV lounges</b> and <b>a lounge with a pool table</b>.</p>
       <p class="fine">The floor plan is not to scale, and the furniture shown is not the actual furnishing.</p>
     </div>
+    <div class="bedpics">
+      <figure><img src="../img/soverom-a.jpg" alt="Bedroom with bed, checked headboard and window" loading="lazy"><figcaption>Bedroom on the main floor</figcaption></figure>
+      <figure><img src="../img/soverom-b.jpg" alt="Bedroom with double bed and warm lamps" loading="lazy"><figcaption>Bedroom on the main floor</figcaption></figure>
+      <figure><img src="../img/hems-sovesal.jpg" alt="Loft bedroom with built-in alcove beds along the wall" loading="lazy"><figcaption>Alcove beds on the loft</figcaption></figure>
+      <figure><img src="../img/hems-soverom-lys.jpg" alt="Bright loft bedroom with alcove bed" loading="lazy"><figcaption>Loft bedroom</figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -283,6 +299,21 @@ footer a{color:var(--muted)}
   </div>
 </section>
 
+<section class="gut" id="arstider">
+  <div class="inner">
+    <span class="label">Summer and winter</span>
+    <h2 style="margin-top:12px">A place for every season</h2>
+    <div class="seasons">
+      <figure class="s-big"><img src="../img/tun-vinter.jpg" alt="The yard with garage and cabin on a clear winter day" loading="lazy"><figcaption>A clear winter day</figcaption></figure>
+      <figure><img src="../img/ute-sommer.jpg" alt="The cabin with turf roof and terrace in late summer, view over the valley" loading="lazy"><figcaption>Late summer with views over the valley</figcaption></figure>
+      <figure><img src="../img/tun-solnedgang.jpg" alt="The yard in the evening sun" loading="lazy"><figcaption>Evening sun over the yard</figcaption></figure>
+      <figure><img src="../img/ute-vinter.jpg" alt="The cabin in deep snow" loading="lazy"><figcaption>Plenty of snow in winter</figcaption></figure>
+      <figure><img src="../img/ute-host.jpg" alt="The cabin and garage seen from below in autumn" loading="lazy"><figcaption>Autumn on the hillside</figcaption></figure>
+      <figure><img src="../img/tun-forste-sno.jpg" alt="First snow in the yard" loading="lazy"><figcaption>First snow in the yard</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <section class="gut" id="beliggenhet" style="padding-top:0">
   <div class="inner split">
     <div class="copy">
@@ -292,6 +323,7 @@ footer a{color:var(--muted)}
       <p>In summer the area opens up for cycling in varied terrain, lovely trails and outdoor experiences for the whole family. Hafjell Golf is one of the most scenic golf courses in Norway, and beautiful mountains for summit hikes are a short trip away.</p>
       <div class="dist"><b>20 min</b><span>by car to Lillehammer: restaurants, shopping and culture</span></div>
       <div class="near"><span>Ski resort</span><span>Ski trails</span><span>Hiking</span><span>Golf</span><span>Restaurant</span><span>Grocery store</span><span>Town</span></div>
+      <figure class="map"><img src="../img/loypekart.jpg" alt="Hafjell trail map with an arrow showing where the cabin is" loading="lazy"><figcaption>Trail map: the arrow shows where the cabin is, with the ski trails right next to it.</figcaption></figure>
     </div>
     <div class="pair">
       <div class="photo"><img src="../img/flyfoto-sommer.jpg" alt="Aerial photo of Hafjell Panorama in summer, the cabin marked" loading="lazy"></div>
