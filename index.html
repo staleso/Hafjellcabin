@@ -137,6 +137,13 @@ footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px sol
   .g-e{grid-column:span 2}
   section{padding-block:64px}
 }
+.herobtns{display:flex;gap:10px;flex-wrap:wrap}
+.cta.ghost{background:rgba(23,20,15,.55);color:var(--fg);border:1px solid var(--brass)}
+.cta.ghost:hover{background:rgba(23,20,15,.8)}
+.contact{display:grid;gap:2px;padding:18px 22px;border:1px solid var(--line);border-radius:4px;background:var(--bg)}
+.contact b{font:400 1.4rem var(--display)}
+.contact a{font-size:1.05rem;overflow-wrap:anywhere}
+footer a{color:var(--muted)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gallery img{transition:none}}
 .lang{display:flex;gap:4px;font:500 .72rem var(--mono);letter-spacing:.1em}.lang a{color:var(--fg);text-decoration:none;padding:6px 9px;border:1px solid transparent;border-radius:999px;background:rgba(23,20,15,.55)}.lang a:hover{border-color:var(--brass)}.lang a[aria-current="page"]{border-color:var(--sage);color:var(--sage)}@media (max-width:480px){header.gut h1{display:none}}.hero .lang{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(16px,env(safe-area-inset-right,0px))}
 </style>
@@ -155,7 +162,7 @@ footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px sol
     <span class="label">Øyer · Gudbrandsdalen · Leie</span>
     <h1>Sentralt på Hafjell Panorama</h1>
     <p class="lede">Romslig hytte med flott utsikt, biljardbord og plass til opptil 12 gjester. Perfekt for familie og venner, sommer som vinter.</p>
-    <a class="cta" href="bilder.html">Se alle bilder →</a>
+    <div class="herobtns"><a class="cta" href="#forespørsel">Send forespørsel</a><a class="cta ghost" href="bilder.html">Se alle bilder →</a></div>
   </div>
 </header>
 
@@ -327,16 +334,17 @@ footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px sol
   </div>
 </section>
 
-<section class="final gut">
+<section class="final gut" id="forespørsel">
   <div class="inner">
     <span class="label">Forespørsel</span>
     <h2>Lyst til å leie?</h2>
     <p>Ta kontakt med utleier for ledige datoer og pris. Oppgi alder på leietaker og antall personer i forespørselen. Kun seriøse leietakere.</p>
-    <a class="cta" href="bilder.html">Se alle bilder →</a>
+    <div class="contact"><span class="label">Kontakt</span><b>Ståle Solem</b><a href="mailto:staleso@gmail.com?subject=Leie%20av%20hytta%20p%C3%A5%20Hafjell">staleso@gmail.com</a></div>
+    <a class="cta" href="mailto:staleso@gmail.com?subject=Leie%20av%20hytta%20p%C3%A5%20Hafjell">Send forespørsel på e-post →</a>
   </div>
 </section>
 
-<footer class="gut"><div class="inner">Hafjell Panorama · Øyer, Innlandet</div></footer>
+<footer class="gut"><div class="inner">Hafjell Panorama · Øyer, Innlandet · Ståle Solem · <a href="mailto:staleso@gmail.com">staleso@gmail.com</a></div></footer>
 
 <figure class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Bildevisning">
   <img id="lbimg" alt="">
