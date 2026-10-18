@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Spacious cabin for rent at Hafjell Panorama in Øyer, Norway: 7 bedrooms, room for 12 guests, pool table, ski in/ski out and panoramic views over Gudbrandsdalen.">
+<meta property="og:title" content="Cabin at Hafjell Panorama">
+<meta property="og:image" content="https://solems.no/img/kjokken-oy.jpg">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<title>Cabin at Hafjell Panorama</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: full-bleed photo opener, then alternating text/photo bands; deliberately dark like the cabin's own interior (smoked wood, sage kitchen, cognac leather, brass). */
+:root{
+  --bg:#17140f; --bg-2:#201c16; --fg:#ece5d8; --muted:#a99f8e; --line:#3a3328;
+  --sage:#9fb3a0; --brass:#d2a65a; --cognac:#b8643a;
+  --display:"Marcellus",Georgia,serif; --body:"Karla",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:17px/1.6 var(--body)}
+img{display:block;max-width:100%}
+a{color:var(--brass)}
+.gut{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.inner{max-width:1120px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;line-height:1.1}
+h2{font-size:clamp(1.9rem,4vw,2.8rem)}
+.label{font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
+p{margin:0}
+
+/* hero */
+.hero{position:relative;min-height:min(86vh,820px);display:grid;align-items:end;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,20,15,.15) 0%,rgba(23,20,15,.25) 45%,rgba(23,20,15,.95) 100%)}
+.hero .inner{position:relative;z-index:1;padding-block:0 56px;display:grid;gap:18px;width:100%}
+.hero h1{font-size:clamp(2.6rem,8vw,5.6rem);max-width:12ch}
+.hero .lede{font-size:1.15rem;max-width:46ch;color:#e6dccb}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--brass);color:#1b150c;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:999px;width:max-content;max-width:100%}
+.cta:hover{background:#e0b56a}
+.cta:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--sage);outline-offset:3px}
+
+/* facts strip */
+.facts{border-block:1px solid var(--line);background:var(--bg-2)}
+.facts ul{list-style:none;margin:0 auto;padding:22px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:18px;max-width:1120px}
+.facts li{display:grid;gap:2px}
+.facts b{font:400 2rem/1 var(--display);color:var(--fg);font-variant-numeric:tabular-nums}
+.facts span{font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+section{padding-block:88px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.split.rev>:first-child{order:2}
+.split>*{min-width:0}
+.copy{display:grid;gap:18px;max-width:52ch}
+.copy p{color:#d7cfbf}
+.photo{border-radius:4px;overflow:hidden;aspect-ratio:4/3}
+.photo img{width:100%;height:100%;object-fit:cover}
+.pair{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}
+.pair .photo:last-child{aspect-ratio:3/4}
+
+/* highlights */
+.hl{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}
+.hl div{border-top:1px solid var(--brass);padding-top:16px;display:grid;gap:6px}
+.hl h3{font-size:1.35rem}
+.hl p{color:var(--muted);font-size:.98rem}
+
+/* rooms */
+.rooms{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.rooms>*{min-width:0}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+td{padding:11px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-family:var(--mono);font-size:.9rem;color:var(--brass);white-space:nowrap}
+td small{color:var(--muted);font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-left:8px}
+.common{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:6px;color:#d7cfbf}
+.common li::before{content:"— ";color:var(--sage)}
+.plans{display:grid;gap:12px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{font:500 .78rem var(--mono);letter-spacing:.1em;text-transform:uppercase;background:none;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--sage);color:#141a14;border-color:var(--sage)}
+.plan{background:#f4f1ea;border-radius:4px;padding:8px;cursor:zoom-in;border:0;display:block;width:100%}
+.plan img{max-height:640px;margin:0 auto;object-fit:contain}
+.fine{font-size:.82rem;color:var(--muted)}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:180px;gap:10px;margin-top:36px}
+.gallery button{padding:0;border:0;border-radius:3px;overflow:hidden;cursor:zoom-in;background:var(--bg-2)}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gallery button:hover img{transform:scale(1.04)}
+.g-a{grid-column:span 4;grid-row:span 2}.g-b{grid-column:span 2;grid-row:span 2}
+.g-c{grid-column:span 2}.g-d{grid-column:span 2}.g-e{grid-column:span 2}
+.g-f{grid-column:span 3;grid-row:span 2}.g-g{grid-column:span 3;grid-row:span 2}
+
+/* facilities */
+.fac{columns:3 200px;column-gap:32px;list-style:none;padding:0;margin:28px 0 0}
+.fac li{break-inside:avoid;padding:8px 0;border-bottom:1px solid var(--line);color:#d7cfbf}
+.fac li.key{color:var(--fg);font-weight:700}
+
+/* location */
+.near{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.near span{font:500 .75rem var(--mono);letter-spacing:.06em;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--sage)}
+.dist{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-variant-numeric:tabular-nums}
+.dist b{font:400 1.6rem/1 var(--display);color:var(--brass)}
+.dist span{align-self:center;color:#d7cfbf}
+
+/* practical */
+.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:36px}
+.terms>div{background:var(--bg-2);border:1px solid var(--line);border-radius:4px;padding:24px;display:grid;gap:12px;align-content:start;min-width:0}
+.terms h3{font-size:1.25rem}
+.terms ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;color:#d7cfbf;font-size:.97rem}
+.price{display:flex;justify-content:space-between;gap:12px}
+.price em{font-style:normal;font-family:var(--mono);color:var(--brass);white-space:nowrap}
+
+.final{text-align:left;background:var(--bg-2);border-top:1px solid var(--line)}
+.final .inner{display:grid;gap:20px;justify-items:start}
+.final p{color:#d7cfbf;max-width:56ch}
+footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,8,6,.94);display:grid;grid-template-rows:1fr auto;padding:calc(env(safe-area-inset-top,0px) + 56px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 16px) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-height:100%;max-width:100%;margin:auto;object-fit:contain;min-height:0}
+.lb figcaption{text-align:center;padding-top:12px;color:var(--muted);font:500 .8rem var(--mono);letter-spacing:.08em}
+.lb button{position:absolute;background:rgba(32,28,22,.8);color:var(--fg);border:1px solid var(--line);border-radius:999px;width:44px;height:44px;font-size:1.3rem;cursor:pointer}
+.lb .x{top:calc(env(safe-area-inset-top,0px) + 8px);right:max(16px,env(safe-area-inset-right,0px))}
+.lb .pv{left:max(16px,env(safe-area-inset-left,0px));top:50%}
+.lb .nx{right:max(16px,env(safe-area-inset-right,0px));top:50%}
+
+@media (max-width:860px){
+  .split,.rooms{grid-template-columns:1fr;gap:32px}
+  .split.rev>:first-child{order:0}
+  .hl,.terms{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .g-a,.g-f,.g-g{grid-column:span 2;grid-row:span 2}
+  .g-b{grid-column:span 2;grid-row:span 2}
+  .g-c,.g-d,.g-e{grid-column:span 1}
+  .g-e{grid-column:span 2}
+  section{padding-block:64px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gallery img{transition:none}}
+.lang{display:flex;gap:4px;font:500 .72rem var(--mono);letter-spacing:.1em}.lang a{color:var(--fg);text-decoration:none;padding:6px 9px;border:1px solid transparent;border-radius:999px;background:rgba(23,20,15,.55)}.lang a:hover{border-color:var(--brass)}.lang a[aria-current="page"]{border-color:var(--sage);color:var(--sage)}@media (max-width:480px){header.gut h1{display:none}}.hero .lang{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(16px,env(safe-area-inset-right,0px))}
+</style>
+<link rel="alternate" hreflang="no" href="https://solems.no/">
+<link rel="alternate" hreflang="en" href="https://solems.no/en/">
+<link rel="alternate" hreflang="da" href="https://solems.no/da/">
+<link rel="alternate" hreflang="x-default" href="https://solems.no/">
+</head>
+<body>
+
+
+<header class="hero">
+  <nav class="lang" aria-label="Språk / Language"><a href="../" hreflang="no" lang="no">NO</a><a href="../en/" hreflang="en" lang="en" aria-current="page">EN</a><a href="../da/" hreflang="da" lang="da">DA</a></nav>
+  <img src="../img/kjokken-oy.jpg" alt="Kitchen with a green kitchen island, log pillars and leather armchairs in the foreground">
+  <div class="inner gut">
+    <span class="label">Øyer · Gudbrandsdalen · For rent</span>
+    <h1>Right in the heart of Hafjell Panorama</h1>
+    <p class="lede">A spacious cabin with great views, a pool table and room for up to 12 guests. Perfect for family and friends, summer and winter alike.</p>
+    <a class="cta" href="bilder.html">See all photos →</a>
+  </div>
+</header>
+
+<div class="facts gut">
+  <ul>
+    <li><b>130 m²</b><span>+ loft approx. 30 m²</span></li>
+    <li><b>7</b><span>Bedrooms</span></li>
+    <li><b>12</b><span>Guests</span></li>
+    <li><b>2</b><span>Bathrooms</span></li>
+    <li><b>2</b><span>TV lounges</span></li>
+    <li><b>20 min</b><span>To Lillehammer</span></li>
+  </ul>
+</div>
+
+<section class="gut" id="om">
+  <div class="inner">
+    <div class="split">
+      <div class="copy">
+        <span class="label">About the cabin</span>
+        <h2>Plenty of space, great views and lots of living areas</h2>
+        <p>Welcome to a large and inviting cabin built in 2000, approx. 130 m² (+ a loft of approx. 30 m²), in an attractive location with lovely views over the mountains. The cabin has a well-planned layout with plenty of room for family and guests.</p>
+        <p>You get no fewer than 7 bedrooms, 4 of them on a practical loft, plus a garage.</p>
+      </div>
+      <div class="photo"><img src="../img/eksterior.jpg" alt="The cabin from outside in summer, with turf roof, stone facade and terrace" loading="lazy"></div>
+    </div>
+    <div class="hl">
+      <div><span class="label">Kitchen</span><h3>Gather round the island</h3><p>A modern kitchen that flows naturally into the living and dining areas. Perfect for getting together after a day in the mountains.</p></div>
+      <div><span class="label">Two TV lounges</span><h3>Room for everyone</h3><p>Two TV lounges give plenty of options for relaxing and for child-friendly corners.</p></div>
+      <div><span class="label">Pool table</span><h3>A pool table of your own</h3><p>A favourite gathering spot for young and old, for extra fun and entertainment.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="gut" style="padding-top:0">
+  <div class="inner split rev">
+    <div class="copy">
+      <span class="label">Lounge with pool table</span>
+      <h2>Evenings by the fire and the pool table</h2>
+      <p>The lounge with the pool table and TV corner has its own wood stove, a large sofa and stairs up to the loft. The dining room has a long table, a wood stove and its own TV corner.</p>
+      <p>This cabin combines plenty of space, great views and lots of living areas. Ideal for active weekends and holidays all year round.</p>
+    </div>
+    <div class="pair">
+      <div class="photo"><img src="../img/biljard-stue.jpg" alt="Pool table in front of the sofa, wood stove and stairs to the loft" loading="lazy"></div>
+      <div class="photo"><img src="../img/spisestue.jpg" alt="Dining table with leather chairs, wood stove and sofa" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="gut" id="bilder" style="padding-top:0">
+  <div class="inner">
+    <span class="label">Photos</span>
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-top:12px"><h2>Take a look around</h2><a href="bilder.html">Browse all photos →</a></div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<section class="gut" id="rom" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="inner rooms">
+    <div>
+      <span class="label">Rooms and beds</span>
+      <h2 style="margin:12px 0 20px">Seven bedrooms, four of them on the loft</h2>
+      <table>
+        <tbody>
+          <tr><td>Bedroom 1</td><td>160 cm</td></tr>
+          <tr><td>Bedroom 2</td><td>150 cm</td></tr>
+          <tr><td>Bedroom 3</td><td>120 cm</td></tr>
+          <tr><td>Bedroom 4<small>loft</small></td><td>150 cm</td></tr>
+          <tr><td>Bedroom 5<small>loft</small></td><td>2 × 120 cm</td></tr>
+          <tr><td>Bedroom 6<small>loft</small></td><td>120 cm</td></tr>
+          <tr><td>Bedroom 7<small>loft</small></td><td>2 × 120 cm</td></tr>
+        </tbody>
+      </table>
+      <ul class="common">
+        <li>Living room with dining area and TV corner</li>
+        <li>Lounge with pool table and TV corner</li>
+        <li>Spacious kitchen</li>
+        <li>2 bathrooms with shower and toilet</li>
+      </ul>
+    </div>
+    <div class="plans">
+      <span class="label">Floor plan</span>
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" id="tab-main" aria-selected="true" data-plan="0">Main floor</button>
+        <button type="button" role="tab" id="tab-hems" aria-selected="false" data-plan="1">Loft</button>
+      </div>
+      <button type="button" class="plan" id="planbtn" aria-label="Show floor plan in full size"><img id="planimg" src="../img/plan-hovedetasje.jpg" alt="Floor plan, main floor"></button>
+      <p class="fine">The floor plan is not to scale, and the furniture shown is not the actual furnishing.</p>
+    </div>
+  </div>
+</section>
+
+<section class="gut" id="fasiliteter">
+  <div class="inner">
+    <span class="label">Amenities</span>
+    <h2 style="margin-top:12px">Everything you need</h2>
+    <ul class="fac">
+      <li class="key">Ski in/ski out</li>
+      <li class="key">EV charger</li>
+      <li class="key">Garage/parking</li>
+      <li class="key">Fireplace/wood stove</li>
+      <li>Internet access</li>
+      <li>Balcony/terrace</li>
+      <li>Kitchen</li>
+      <li>Dishwasher</li>
+      <li>Fridge</li>
+      <li>Freezer</li>
+      <li>Microwave</li>
+      <li>Coffee maker</li>
+      <li>Washing machine</li>
+      <li>Tumble dryer</li>
+      <li>Vacuum cleaner</li>
+      <li>TV</li>
+      <li>Running water and electricity</li>
+      <li>Non-smoking</li>
+    </ul>
+  </div>
+</section>
+
+<section class="gut" id="beliggenhet" style="padding-top:0">
+  <div class="inner split">
+    <div class="copy">
+      <span class="label">Location</span>
+      <h2>Panoramic views over Gudbrandsdalen</h2>
+      <p>Hafjell Panorama offers a spectacular location with panoramic views over the Gudbrandsdalen valley and plenty of sun. You stay in the middle of a year-round paradise, close to skiing, golf and wonderful nature. Hafjell Alpine Centre, one of Norway's best ski resorts, is close by, and excellent cross-country trails start right outside the door.</p>
+      <p>In summer the area opens up for cycling in varied terrain, lovely trails and outdoor experiences for the whole family. Hafjell Golf is one of the most scenic golf courses in Norway, and beautiful mountains for summit hikes are a short trip away.</p>
+      <div class="dist"><b>20 min</b><span>by car to Lillehammer: restaurants, shopping and culture</span></div>
+      <div class="near"><span>Ski resort</span><span>Ski trails</span><span>Hiking</span><span>Golf</span><span>Restaurant</span><span>Grocery store</span><span>Town</span></div>
+    </div>
+    <div class="pair">
+      <div class="photo"><img src="../img/flyfoto-sommer.jpg" alt="Aerial photo of Hafjell Panorama in summer, the cabin marked" loading="lazy"></div>
+      <div class="photo"><img src="../img/flyfoto-vinter.jpg" alt="Aerial photo in winter looking towards Gudbrandsdalen and the river Lågen, the cabin marked" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="gut" id="praktisk" style="padding-top:0">
+  <div class="inner">
+    <span class="label">Practical information</span>
+    <h2 style="margin-top:12px">Good to know before you book</h2>
+    <div class="terms">
+      <div>
+        <h3>Extra charges</h3>
+        <ul>
+          <li class="price"><span>Final cleaning</span><em>NOK 2,000</em></li>
+          <li class="price"><span>Bed linen per person</span><em>NOK 200</em></li>
+          <li class="fine">Both are mandatory and come in addition to the rent.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>House rules</h3>
+        <ul>
+          <li>No smoking</li>
+          <li>No pets</li>
+          <li>Not rented to youth groups</li>
+          <li>Not wheelchair accessible</li>
+          <li>The outdoor hot tub is not available</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cancellation</h3>
+        <ul>
+          <li class="price"><span>More than 14 days before</span><em>100 %</em></li>
+          <li class="price"><span>7–14 days before</span><em>50 %</em></li>
+          <li class="price"><span>Less than 7 days before</span><em>0 %</em></li>
+          <li class="fine">Refund counted from the check-in date.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final gut">
+  <div class="inner">
+    <span class="label">Enquiry</span>
+    <h2>Would you like to rent?</h2>
+    <p>Contact the owner for available dates and prices. Please state the age of the person renting and the number of guests. Serious enquiries only.</p>
+    <a class="cta" href="bilder.html">See all photos →</a>
+  </div>
+</section>
+
+<footer class="gut"><div class="inner">Hafjell Panorama · Øyer, Innlandet, Norway</div></footer>
+
+<figure class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <img id="lbimg" alt="">
+  <figcaption id="lbcap"></figcaption>
+  <button type="button" class="x" id="lbx" aria-label="Close">×</button>
+  <button type="button" class="pv" id="lbp" aria-label="Previous photo">‹</button>
+  <button type="button" class="nx" id="lbn" aria-label="Next photo">›</button>
+</figure>
+
+<script>
+const PHOTOS=[
+  ["kjokken-stue","Spacious kitchen with lounge area","g-a"],
+  ["salong","Lounge area by the kitchen","g-b"],
+  ["spisestue-peis","Dining room and TV corner","g-c"],
+  ["trapp-spisestue","Stairs to the loft and dining room","g-d"],
+  ["entre","Entrance hall","g-e"],
+  ["biljard","Lounge with pool table and TV corner","g-f"],
+  ["kjokken-oy","Kitchen with large island","g-g"],
+];
+const PLANS=[["plan-hovedetasje","Floor plan, main floor"],["plan-hems","Floor plan, loft"]];
+const g=document.getElementById("gallery");
+let list=PHOTOS, idx=0, lastFocus=null;
+PHOTOS.forEach(([f,c,cls],i)=>{
+  const b=document.createElement("button");b.type="button";b.className=cls;b.setAttribute("aria-label","Show larger: "+c);
+  const im=document.createElement("img");im.src="../img/"+f+".jpg";im.alt=c;im.loading="lazy";b.append(im);
+  b.onclick=()=>openLb(PHOTOS,i);g.append(b);
+});
+const lb=document.getElementById("lb"),lbimg=document.getElementById("lbimg"),lbcap=document.getElementById("lbcap");
+function show(){const [f,c]=list[idx];lbimg.src="../img/"+f+".jpg";lbimg.alt=c;lbcap.textContent=c+"  ·  "+(idx+1)+" / "+list.length;
+  const multi=list.length>1;document.getElementById("lbp").hidden=!multi;document.getElementById("lbn").hidden=!multi}
+function openLb(l,i){list=l;idx=i;lastFocus=document.activeElement;show();lb.hidden=false;document.getElementById("lbx").focus();document.body.style.overflow="hidden"}
+function closeLb(){lb.hidden=true;document.body.style.overflow="";lastFocus&&lastFocus.focus()}
+function step(d){idx=(idx+d+list.length)%list.length;show()}
+document.getElementById("lbx").onclick=closeLb;
+document.getElementById("lbp").onclick=()=>step(-1);
+document.getElementById("lbn").onclick=()=>step(1);
+lb.addEventListener("click",e=>{if(e.target===lb)closeLb()});
+document.addEventListener("keydown",e=>{if(lb.hidden)return;if(e.key==="Escape")closeLb();if(e.key==="ArrowLeft")step(-1);if(e.key==="ArrowRight")step(1)});
+
+let plan=0;
+document.querySelectorAll(".tabs button").forEach(t=>t.onclick=()=>{
+  plan=+t.dataset.plan;document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-selected",x===t?"true":"false"));
+  const [f,c]=PLANS[plan];const im=document.getElementById("planimg");im.src="../img/"+f+".jpg";im.alt=c;
+});
+document.getElementById("planbtn").onclick=()=>openLb([PLANS[plan]],0);
+</script>
+
+</body>
+</html>
