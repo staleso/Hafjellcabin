@@ -155,6 +155,42 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
 .seasons .s-big img{aspect-ratio:auto;height:0;flex:1 1 auto;min-height:240px}
 .map img{border-radius:3px;width:100%}
 @media (max-width:860px){.bedpics{grid-template-columns:repeat(2,1fr)}.seasons{grid-template-columns:1fr 1fr}.seasons .s-big{grid-column:1/-1;grid-row:auto}.seasons .s-big img{aspect-ratio:4/3;height:auto;flex:none;min-height:0}}
+.booking{justify-self:stretch;display:grid;grid-template-columns:1.15fr 1fr;gap:28px;align-items:start;width:100%}
+.booking>*{min-width:0}
+.cal-wrap{background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:18px;display:grid;gap:14px}
+.cal-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.cal-hint{font-size:.92rem;color:var(--sage);text-align:center}
+.calnav{width:38px;height:38px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--fg);font-size:1.2rem;cursor:pointer;flex:none}
+.calnav:hover{border-color:var(--brass)}
+.months{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.month h4{font:400 1.1rem var(--display);margin:0 0 8px;text-transform:capitalize}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.dow{font:500 .66rem var(--mono);color:var(--muted);text-align:center;text-transform:uppercase;padding-bottom:4px}
+.d{aspect-ratio:1;border:0;border-radius:3px;background:var(--bg-2);color:var(--fg);font:500 .8rem var(--mono);font-variant-numeric:tabular-nums;cursor:pointer;padding:0;display:grid;place-items:center}
+.d:hover:not(:disabled){outline:1px solid var(--brass)}
+.d.past{opacity:.28;cursor:default}
+.d.bk{background:repeating-linear-gradient(135deg,#3a2a22 0 4px,#2a211b 4px 8px);color:var(--muted);text-decoration:line-through}
+.d.rng{background:rgba(210,166,90,.28)}
+.d.sel{background:var(--brass);color:#1b150c}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:6px}
+.legend i{width:14px;height:14px;aspect-ratio:auto;display:inline-block}
+.bform{display:grid;gap:12px}
+.bform label{display:grid;gap:4px;font-size:.85rem;color:var(--muted)}
+.bform input,.bform textarea{font:inherit;font-size:1rem;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:10px 12px;width:100%;color-scheme:dark}
+.bform input:focus,.bform textarea:focus{outline:2px solid var(--sage);outline-offset:1px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sum{border:1px solid var(--line);border-radius:4px;padding:14px 16px;display:grid;gap:6px;background:var(--bg)}
+.srow{display:flex;justify-content:space-between;gap:12px;font-size:.95rem;color:#d7cfbf}
+.srow em{font-style:normal;font-family:var(--mono);color:var(--brass);white-space:nowrap}
+.srow.tot{border-top:1px solid var(--line);padding-top:8px;font-weight:700;color:var(--fg)}
+.ferr{color:#e8957c;margin:0;font-size:.92rem}
+.bform .cta{border:0;cursor:pointer;font:inherit;font-weight:700}
+.result{border:1px solid var(--sage);border-radius:4px;padding:16px;display:grid;gap:10px;background:var(--bg)}
+.result pre{white-space:pre-wrap;font:.88rem/1.5 var(--mono);color:#d7cfbf;margin:0;overflow-wrap:anywhere}
+.rbtns{display:flex;gap:8px;flex-wrap:wrap}
+@media (max-width:860px){.booking{grid-template-columns:1fr}}
+@media (max-width:420px){.row2{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gallery img{transition:none}}
 .lang{display:flex;gap:4px;font:500 .72rem var(--mono);letter-spacing:.1em}.lang a{color:var(--fg);text-decoration:none;padding:6px 9px;border:1px solid transparent;border-radius:999px;background:rgba(23,20,15,.55)}.lang a:hover{border-color:var(--brass)}.lang a[aria-current="page"]{border-color:var(--sage);color:var(--sage)}@media (max-width:480px){header.gut h1{display:none}}.hero .lang{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(16px,env(safe-area-inset-right,0px))}
 </style>
@@ -173,7 +209,7 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
     <span class="label">Øyer · Gudbrandsdalen · For rent</span>
     <h1>Right in the heart of Hafjell Panorama</h1>
     <p class="lede">A spacious cabin with great views, a pool table and room for up to 12 guests. Perfect for family and friends, summer and winter alike.</p>
-    <div class="herobtns"><a class="cta" href="#forespørsel">Contact us</a><a class="cta ghost" href="bilder.html">See all photos →</a></div>
+    <div class="herobtns"><a class="cta" href="#forespørsel">Check availability</a><a class="cta ghost" href="bilder.html">See all photos →</a></div>
   </div>
 </header>
 
@@ -185,6 +221,7 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
     <li><b>2</b><span>Bathrooms</span></li>
     <li><b>2</b><span>TV lounges</span></li>
     <li><b>20 min</b><span>To Lillehammer</span></li>
+    <li><b>NOK 6,000</b><span>Per night, from</span></li>
   </ul>
 </div>
 
@@ -338,11 +375,13 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
     <h2 style="margin-top:12px">Good to know before you book</h2>
     <div class="terms">
       <div>
-        <h3>Extra charges</h3>
+        <h3>Price</h3>
         <ul>
+          <li class="price"><span>Rent per night, from</span><em>NOK 6,000</em></li>
+          <li class="price"><span>Minimum stay</span><em>5 nights</em></li>
           <li class="price"><span>Final cleaning</span><em>NOK 2,000</em></li>
           <li class="price"><span>Bed linen per person</span><em>NOK 200</em></li>
-          <li class="fine">Both are mandatory and come in addition to the rent.</li>
+          <li class="fine">Final cleaning and bed linen are mandatory and come in addition to the rent.</li>
         </ul>
       </div>
       <div>
@@ -370,9 +409,185 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
 
 <section class="final gut" id="forespørsel">
   <div class="inner">
-    <span class="label">Enquiry</span>
+    <span class="label">Availability and enquiry</span>
     <h2>Would you like to rent?</h2>
-    <p>Contact the owner for available dates and prices. Please state the age of the person renting and the number of guests. Serious enquiries only.</p>
+    <p>Pick your dates in the calendar and send an enquiry. From NOK 6,000 per night, minimum 5 nights. Serious enquiries only.</p>
+    <div class="booking" id="booking">
+      <div class="cal-wrap">
+        <div class="cal-head">
+          <button type="button" class="calnav" id="calPrev">‹</button>
+          <span class="cal-hint" id="calHint"></span>
+          <button type="button" class="calnav" id="calNext">›</button>
+        </div>
+        <div class="months" id="months"></div>
+        <div class="legend" id="legend"></div>
+      </div>
+      <form class="bform" id="bform" novalidate>
+        <div class="row2">
+          <label><span data-t="checkin"></span><input type="date" id="fIn" required></label>
+          <label><span data-t="checkout"></span><input type="date" id="fOut" required></label>
+        </div>
+        <div class="row2">
+          <label><span data-t="guests"></span><input type="number" id="fGuests" min="1" max="12" value="6" required></label>
+          <label><span data-t="age"></span><input type="number" id="fAge" min="18" max="110" required></label>
+        </div>
+        <label><span data-t="name"></span><input type="text" id="fName" autocomplete="name" required></label>
+        <div class="row2">
+          <label><span data-t="phone"></span><input type="tel" id="fPhone" autocomplete="tel" required></label>
+          <label><span data-t="email"></span><input type="email" id="fEmail" autocomplete="email"></label>
+        </div>
+        <label><span data-t="msg"></span><textarea id="fMsg" rows="3"></textarea></label>
+        <div class="sum" id="sum"></div>
+        <p class="ferr" id="fErr" hidden></p>
+        <button type="submit" class="cta" id="fSubmit"></button>
+        <div class="result" id="result" hidden>
+          <b data-t="resultTitle"></b>
+          <pre id="msgText"></pre>
+          <div class="rbtns">
+            <a class="cta" id="sendSms"></a>
+            <a class="cta ghost" id="sendWa" target="_blank" rel="noopener"></a>
+            <button type="button" class="cta ghost" id="copyBtn"></button>
+          </div>
+          <p class="fine" data-t="resultNote"></p>
+        </div>
+      </form>
+    </div>
+<script>
+(function(){
+const PRICE=6000, MIN=5, MAXG=12, CLEAN=2000, LINEN=200, PHONE="4740202122";
+const LANG=(document.documentElement.lang||"no").slice(0,2);
+const T={
+ no:{loc:"nb-NO",checkin:"Ankomst",checkout:"Avreise",guests:"Antall gjester",age:"Alder på leietaker",name:"Navn",phone:"Telefon",email:"E-post (valgfritt)",msg:"Melding (valgfritt)",
+   submit:"Lag forespørsel",pickStart:"Velg ankomstdato i kalenderen",pickEnd:"Velg avreisedato – minst 5 netter",chosen:"{n} netter valgt",
+   free:"Ledig",booked:"Opptatt",sel:"Valgt",prev:"Forrige måned",next:"Neste måned",
+   minNights:"Minimum leie er 5 netter. Velg en senere avreisedato.",overlap:"Perioden overlapper med opptatte datoer. Velg andre datoer.",
+   missing:"Fyll inn datoer, antall gjester, alder, navn og telefon.",maxG:"Hytta har plass til maks 12 gjester.",ageMin:"Leietaker må være minst 18 år.",past:"Ankomst kan ikke være tilbake i tid.",
+   nightsRow:"kr 6 000 × {n} netter",clean:"Utvask",linen:"Sengetøy ({g} × kr 200)",total:"Totalt fra",priceNote:"Pris fra kr 6 000 per natt, minimum 5 netter. Endelig pris bekreftes av utleier.",
+   resultTitle:"Send forespørselen",resultNote:"Forespørselen sendes fra din egen telefon. Ingenting sendes før du trykker send i SMS eller WhatsApp.",
+   sms:"Send som SMS",wa:"Send på WhatsApp",copy:"Kopier tekst",copied:"Kopiert",loadErr:"Kunne ikke hente ledige datoer. Ring +47 40 20 21 22 for å sjekke.",
+   m:["Hei! Jeg vil gjerne leie hytta på Hafjell Panorama.","Ankomst","Avreise","netter","Gjester","Alder leietaker","Navn","Telefon","E-post","Melding"]},
+ en:{loc:"en-GB",checkin:"Check-in",checkout:"Check-out",guests:"Number of guests",age:"Age of person renting",name:"Name",phone:"Phone",email:"Email (optional)",msg:"Message (optional)",
+   submit:"Create enquiry",pickStart:"Pick your check-in date in the calendar",pickEnd:"Pick your check-out date – at least 5 nights",chosen:"{n} nights selected",
+   free:"Available",booked:"Booked",sel:"Selected",prev:"Previous month",next:"Next month",
+   minNights:"The minimum stay is 5 nights. Pick a later check-out date.",overlap:"These dates overlap with a booking. Please pick other dates.",
+   missing:"Please fill in dates, number of guests, age, name and phone.",maxG:"The cabin sleeps up to 12 guests.",ageMin:"The person renting must be at least 18.",past:"Check-in cannot be in the past.",
+   nightsRow:"NOK 6,000 × {n} nights",clean:"Final cleaning",linen:"Bed linen ({g} × NOK 200)",total:"Total from",priceNote:"From NOK 6,000 per night, minimum 5 nights. The final price is confirmed by the owner.",
+   resultTitle:"Send your enquiry",resultNote:"The enquiry is sent from your own phone. Nothing is sent until you press send in your SMS or WhatsApp app.",
+   sms:"Send as text message",wa:"Send on WhatsApp",copy:"Copy text",copied:"Copied",loadErr:"Could not load availability. Call +47 40 20 21 22 to check.",
+   m:["Hi! I would like to rent the cabin at Hafjell Panorama.","Check-in","Check-out","nights","Guests","Age of renter","Name","Phone","Email","Message"]},
+ da:{loc:"da-DK",checkin:"Ankomst",checkout:"Afrejse",guests:"Antal gæster",age:"Lejers alder",name:"Navn",phone:"Telefon",email:"E-mail (valgfri)",msg:"Besked (valgfri)",
+   submit:"Lav forespørgsel",pickStart:"Vælg ankomstdato i kalenderen",pickEnd:"Vælg afrejsedato – mindst 5 nætter",chosen:"{n} nætter valgt",
+   free:"Ledig",booked:"Optaget",sel:"Valgt",prev:"Forrige måned",next:"Næste måned",
+   minNights:"Minimumslejen er 5 nætter. Vælg en senere afrejsedato.",overlap:"Perioden overlapper med optagne datoer. Vælg andre datoer.",
+   missing:"Udfyld datoer, antal gæster, alder, navn og telefon.",maxG:"Hytten har plads til højst 12 gæster.",ageMin:"Lejer skal være mindst 18 år.",past:"Ankomst kan ikke ligge i fortiden.",
+   nightsRow:"NOK 6.000 × {n} nætter",clean:"Slutrengøring",linen:"Sengetøj ({g} × NOK 200)",total:"I alt fra",priceNote:"Fra NOK 6.000 pr. nat, mindst 5 nætter. Den endelige pris bekræftes af udlejer.",
+   resultTitle:"Send forespørgslen",resultNote:"Forespørgslen sendes fra din egen telefon. Intet sendes, før du trykker send i sms eller WhatsApp.",
+   sms:"Send som sms",wa:"Send på WhatsApp",copy:"Kopiér tekst",copied:"Kopieret",loadErr:"Kunne ikke hente ledige datoer. Ring +47 40 20 21 22 for at høre.",
+   m:["Hej! Jeg vil gerne leje hytten på Hafjell Panorama.","Ankomst","Afrejse","nætter","Gæster","Lejers alder","Navn","Telefon","E-mail","Besked"]}
+}[LANG]||null;
+if(!T) return;
+const $=id=>document.getElementById(id);
+const fmtN=new Intl.NumberFormat(T.loc);
+const kr=v=>(LANG==="no"?"kr ":"NOK ")+fmtN.format(v);
+document.querySelectorAll("#booking [data-t]").forEach(e=>e.textContent=T[e.dataset.t]);
+$("fSubmit").textContent=T.submit;$("sendSms").textContent=T.sms;$("sendWa").textContent=T.wa;$("copyBtn").textContent=T.copy;
+$("calPrev").setAttribute("aria-label",T.prev);$("calNext").setAttribute("aria-label",T.next);
+
+// dates as "YYYY-MM-DD" strings, arithmetic in UTC days
+const toDay=s=>Date.UTC(+s.slice(0,4),+s.slice(5,7)-1,+s.slice(8,10))/864e5;
+const toStr=d=>new Date(d*864e5).toISOString().slice(0,10);
+const now=new Date();const today=Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())/864e5;
+let booked=new Set(); // booked nights (day numbers)
+let ci=null, co=null; // check-in / check-out day numbers
+let view=new Date(Date.UTC(now.getFullYear(),now.getMonth(),1));
+
+const ROOT=/\/(en|da)\//.test(location.pathname)?"../":"";
+fetch(ROOT+"bookings.json",{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject()).then(j=>{
+  (j.opptatt||[]).forEach(p=>{for(let d=toDay(p.fra);d<toDay(p.til);d++)booked.add(d)});render();
+}).catch(()=>{$("calHint").textContent=T.loadErr});
+
+const free=(a,b)=>{for(let d=a;d<b;d++)if(booked.has(d))return false;return true};
+function render(){
+  const box=$("months");box.replaceChildren();
+  const two=matchMedia("(min-width:700px)").matches?2:1;
+  for(let k=0;k<two;k++){
+    const m=new Date(Date.UTC(view.getUTCFullYear(),view.getUTCMonth()+k,1));
+    const wrap=document.createElement("div");wrap.className="month";
+    const h=document.createElement("h4");h.textContent=new Intl.DateTimeFormat(T.loc,{month:"long",year:"numeric",timeZone:"UTC"}).format(m);wrap.append(h);
+    const g=document.createElement("div");g.className="days";
+    for(let i=0;i<7;i++){const w=document.createElement("span");w.className="dow";w.textContent=new Intl.DateTimeFormat(T.loc,{weekday:"narrow",timeZone:"UTC"}).format(new Date(Date.UTC(2024,0,1+i)));g.append(w)}
+    const first=m.getTime()/864e5, off=(m.getUTCDay()+6)%7, len=new Date(Date.UTC(m.getUTCFullYear(),m.getUTCMonth()+1,0)).getUTCDate();
+    for(let i=0;i<off;i++)g.append(document.createElement("span"));
+    for(let i=0;i<len;i++){
+      const d=first+i,b=document.createElement("button");b.type="button";b.textContent=i+1;b.className="d";
+      const isB=booked.has(d), isPast=d<today;
+      if(isPast){b.disabled=true;b.classList.add("past")}
+      else if(isB){b.classList.add("bk");b.title=T.booked}
+      if(ci!==null&&(d===ci||d===co))b.classList.add("sel");
+      if(ci!==null&&co!==null&&d>ci&&d<co)b.classList.add("rng");
+      b.setAttribute("aria-label",new Intl.DateTimeFormat(T.loc,{dateStyle:"full",timeZone:"UTC"}).format(new Date(d*864e5))+(isB?" – "+T.booked:""));
+      b.onclick=()=>pick(d);g.append(b);
+    }
+    wrap.append(g);box.append(wrap);
+  }
+  $("calHint").textContent=ci===null?T.pickStart:co===null?T.pickEnd:T.chosen.replace("{n}",co-ci);
+  const lg=$("legend");lg.replaceChildren();
+  [["",T.free],["bk",T.booked],["sel",T.sel]].forEach(([c,t])=>{const s=document.createElement("span");const i=document.createElement("i");i.className="d "+c;s.append(i,document.createTextNode(t));lg.append(s)});
+  summary();
+}
+function err(t){const e=$("fErr");e.textContent=t||"";e.hidden=!t}
+function pick(d){
+  err("");
+  if(ci===null||co!==null||d<=ci){ if(booked.has(d))return err(T.overlap); ci=d;co=null; }
+  else{ if(d-ci<MIN)return err(T.minNights); if(!free(ci,d))return err(T.overlap); co=d; }
+  $("fIn").value=ci!==null?toStr(ci):"";$("fOut").value=co!==null?toStr(co):"";render();
+}
+["fIn","fOut"].forEach(id=>$(id).addEventListener("change",()=>{
+  ci=$("fIn").value?toDay($("fIn").value):null;co=$("fOut").value?toDay($("fOut").value):null;
+  if(ci!==null){const m=new Date(ci*864e5);view=new Date(Date.UTC(m.getUTCFullYear(),m.getUTCMonth(),1))}
+  err("");render();
+}));
+$("fGuests").addEventListener("input",summary);
+$("calPrev").onclick=()=>{const n=new Date(Date.UTC(view.getUTCFullYear(),view.getUTCMonth()-1,1));if(n.getTime()/864e5+31>today){view=n;render()}};
+$("calNext").onclick=()=>{view=new Date(Date.UTC(view.getUTCFullYear(),view.getUTCMonth()+1,1));render()};
+addEventListener("resize",()=>render());
+
+function summary(){
+  const s=$("sum");s.replaceChildren();
+  const n=(ci!==null&&co!==null&&co>ci)?co-ci:MIN, g=Math.min(Math.max(+$("fGuests").value||1,1),MAXG);
+  const rows=[[T.nightsRow.replace("{n}",n),PRICE*n],[T.clean,CLEAN],[T.linen.replace("{g}",g),LINEN*g]];
+  rows.forEach(([a,v])=>{const r=document.createElement("div");r.className="srow";const x=document.createElement("span");x.textContent=a;const y=document.createElement("em");y.textContent=kr(v);r.append(x,y);s.append(r)});
+  const t=document.createElement("div");t.className="srow tot";const a=document.createElement("span");a.textContent=T.total;const b=document.createElement("em");b.textContent=kr(rows.reduce((p,r)=>p+r[1],0));t.append(a,b);s.append(t);
+  const p=document.createElement("p");p.className="fine";p.textContent=T.priceNote;s.append(p);
+}
+
+$("bform").addEventListener("submit",ev=>{
+  ev.preventDefault();err("");
+  const v=id=>$(id).value.trim();
+  if(!v("fIn")||!v("fOut")||!v("fGuests")||!v("fAge")||!v("fName")||!v("fPhone"))return err(T.missing);
+  const a=toDay(v("fIn")),b=toDay(v("fOut"));
+  if(a<today)return err(T.past);
+  if(b-a<MIN)return err(T.minNights);
+  if(!free(a,b))return err(T.overlap);
+  if(+v("fGuests")>MAXG||+v("fGuests")<1)return err(T.maxG);
+  if(+v("fAge")<18)return err(T.ageMin);
+  const df=new Intl.DateTimeFormat(T.loc,{dateStyle:"long",timeZone:"UTC"});
+  const L=T.m;
+  const lines=[L[0],"",L[1]+": "+df.format(new Date(a*864e5)),L[2]+": "+df.format(new Date(b*864e5))+" ("+(b-a)+" "+L[3]+")",L[4]+": "+v("fGuests"),L[5]+": "+v("fAge"),L[6]+": "+v("fName"),L[7]+": "+v("fPhone")];
+  if(v("fEmail"))lines.push(L[8]+": "+v("fEmail"));
+  if(v("fMsg"))lines.push("",L[9]+": "+v("fMsg"));
+  const text=lines.join("\n");
+  $("msgText").textContent=text;
+  $("sendSms").href="sms:+"+PHONE+"?&body="+encodeURIComponent(text);
+  $("sendWa").href="https://wa.me/"+PHONE+"?text="+encodeURIComponent(text);
+  $("result").hidden=false;$("result").scrollIntoView({block:"nearest",behavior:"smooth"});
+});
+$("copyBtn").onclick=()=>{const t=$("msgText").textContent;
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{$("copyBtn").textContent=T.copied;setTimeout(()=>$("copyBtn").textContent=T.copy,2000)})
+  .catch(()=>{const r=document.createRange();r.selectNodeContents($("msgText"));const s=getSelection();s.removeAllRanges();s.addRange(r)})};
+render();
+})();
+</script>
     <div class="contact"><span class="label">Contact</span><b>Ståle Solem</b><a href="tel:+4740202122">+47 40 20 21 22</a><span class="fine">Call or send a text message</span></div>
     <a class="cta" href="tel:+4740202122">Call +47 40 20 21 22</a>
   </div>

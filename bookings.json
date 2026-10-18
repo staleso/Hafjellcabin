@@ -1,0 +1,4 @@
+{
+  "_info": "Opptatte perioder. 'fra' = ankomstdato, 'til' = avreisedato (ÅÅÅÅ-MM-DD). Nettene fra og med 'fra' til (ikke med) 'til' vises som opptatt.",
+  "opptatt": []
+}
