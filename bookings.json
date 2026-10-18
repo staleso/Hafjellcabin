@@ -1,4 +1,12 @@
 {
   "_info": "Opptatte perioder. 'fra' = ankomstdato, 'til' = avreisedato (ÅÅÅÅ-MM-DD). Nettene fra og med 'fra' til (ikke med) 'til' vises som opptatt.",
-  "opptatt": []
+  "opptatt": [
+    { "fra": "2026-09-28", "til": "2026-12-11" },
+    { "fra": "2026-12-11", "til": "2027-01-05" },
+    { "fra": "2027-01-05", "til": "2027-01-10" },
+    { "fra": "2027-02-13", "til": "2027-02-21" },
+    { "fra": "2027-02-22", "til": "2027-02-28" },
+    { "fra": "2027-03-19", "til": "2027-03-24" },
+    { "fra": "2027-03-24", "til": "2027-03-31" }
+  ]
 }
