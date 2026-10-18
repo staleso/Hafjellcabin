@@ -198,8 +198,8 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
 .tn-links>a{color:#d7cfbf;text-decoration:none;font-size:.92rem;padding:8px 10px;border-radius:999px}
 .tn-links>a:hover{color:var(--fg);background:var(--bg-2)}
 .tn-links>a.tn-cta{background:var(--brass);color:#1b150c;font-weight:700;padding:8px 14px;margin-left:6px}
-.tn-links .lang{margin-left:8px}
-.tn-links .lang a{background:none}
+.tn-links{order:1}.tn-inner>.lang{order:2;margin-left:4px}.tn-toggle{order:3}
+.tn-inner>.lang a{background:none}
 .tn-toggle{display:none;background:none;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:7px 14px;font:500 .78rem var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
 section,header.hero{scroll-margin-top:70px}
 .bedpics{grid-template-columns:repeat(2,1fr)!important}
@@ -210,7 +210,7 @@ section,header.hero{scroll-margin-top:70px}
   .tn-links.open{display:flex}
   .tn-links>a{padding:12px 10px;font-size:1rem}
   .tn-links>a.tn-cta{margin:8px 0 0;text-align:center}
-  .tn-links .lang{margin:10px 0 0;justify-content:center}
+  .tn-inner>.lang{order:1}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.gallery img{transition:none}}
 .lang{display:flex;gap:4px;font:500 .72rem var(--mono);letter-spacing:.1em}.lang a{color:var(--fg);text-decoration:none;padding:6px 9px;border:1px solid transparent;border-radius:999px;background:rgba(23,20,15,.55)}.lang a:hover{border-color:var(--brass)}.lang a[aria-current="page"]{border-color:var(--sage);color:var(--sage)}@media (max-width:480px){header.gut h1{display:none}}.hero .lang{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(16px,env(safe-area-inset-right,0px))}
@@ -226,11 +226,11 @@ section,header.hero{scroll-margin-top:70px}
 <nav class="topnav" id="topnav" aria-label="Hovedmenu">
   <div class="tn-inner gut">
     <a class="brand" href="#top">Hafjell Panorama</a>
+    <nav class="lang" aria-label="Språk / Language"><a href="../" hreflang="no" lang="no">NO</a><a href="../en/" hreflang="en" lang="en">EN</a><a href="../da/" hreflang="da" lang="da" aria-current="page">DA</a></nav>
     <button type="button" class="tn-toggle" id="tnToggle" aria-expanded="false" aria-controls="tnLinks">Menu</button>
     <div class="tn-links" id="tnLinks">
       <a href="#om">Om hytten</a><a href="#rom">Værelser</a><a href="#fasiliteter">Faciliteter</a><a href="#beliggenhet">Beliggenhed</a><a href="#praktisk">Priser</a><a href="bilder.html">Billeder</a>
       <a class="tn-cta" href="#forespørsel">Ledige datoer</a>
-      <nav class="lang" aria-label="Språk / Language"><a href="../" hreflang="no" lang="no">NO</a><a href="../en/" hreflang="en" lang="en">EN</a><a href="../da/" hreflang="da" lang="da" aria-current="page">DA</a></nav>
     </div>
   </div>
 </nav>
