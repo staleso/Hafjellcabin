@@ -249,9 +249,8 @@ footer a{color:var(--muted)}
         <button type="button" role="tab" id="tab-main" aria-selected="true" data-plan="0">Main floor</button>
         <button type="button" role="tab" id="tab-hems" aria-selected="false" data-plan="1">Loft</button>
       </div>
-      <button type="button" class="plan" id="planbtn" aria-label="Show floor plan in full size"><img id="planimg" src="../img/plan-hovedetasje.jpg" alt="Floor plan, main floor"></button>
-      <p class="plannote">Note: The floor plan is older and shows two kitchens. Today the cabin has <b>one kitchen</b>, <b>two TV lounges</b> and <b>a lounge with a pool table</b>.</p>
-      <p class="fine">The floor plan is not to scale, and the furniture shown is not the actual furnishing.</p>
+      <button type="button" class="plan" id="planbtn" aria-label="Show floor plan in full size"><img id="planimg" src="../img/plan-hovedetasje-en.jpg" alt="Floor plan, main floor"></button>
+      <p class="fine">The floor plans are schematic and not to scale.</p>
     </div>
   </div>
 </section>
@@ -366,7 +365,7 @@ const PHOTOS=[
   ["biljard","Lounge with pool table and TV corner","g-f"],
   ["kjokken-oy","Kitchen with large island","g-g"],
 ];
-const PLANS=[["plan-hovedetasje","Floor plan, main floor"],["plan-hems","Floor plan, loft"]];
+const PLANS=[["plan-hovedetasje-en","Floor plan, main floor"],["plan-hems","Floor plan, loft"]];
 const g=document.getElementById("gallery");
 let list=PHOTOS, idx=0, lastFocus=null;
 PHOTOS.forEach(([f,c,cls],i)=>{

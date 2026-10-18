@@ -249,9 +249,8 @@ footer a{color:var(--muted)}
         <button type="button" role="tab" id="tab-main" aria-selected="true" data-plan="0">Hovedetasje</button>
         <button type="button" role="tab" id="tab-hems" aria-selected="false" data-plan="1">Hems</button>
       </div>
-      <button type="button" class="plan" id="planbtn" aria-label="Vis plantegning i full størrelse"><img id="planimg" src="img/plan-hovedetasje.jpg" alt="Plantegning hovedetasje"></button>
-      <p class="plannote">Merk: Plantegningen er eldre og viser to kjøkken. I dag har hytta <b>ett kjøkken</b>, <b>to TV-stuer</b> og <b>stue med biljardbord</b>.</p>
-      <p class="fine">Plantegningen er ikke målbar, og møblene er ikke basert på den faktiske innredningen.</p>
+      <button type="button" class="plan" id="planbtn" aria-label="Vis plantegning i full størrelse"><img id="planimg" src="img/plan-hovedetasje-no.jpg" alt="Plantegning hovedetasje"></button>
+      <p class="fine">Plantegningene er skjematiske og ikke målfaste.</p>
     </div>
   </div>
 </section>
@@ -366,7 +365,7 @@ const PHOTOS=[
   ["biljard","Stue med biljardbord og TV-krok","g-f"],
   ["kjokken-oy","Kjøkken med stor kjøkkenøy","g-g"],
 ];
-const PLANS=[["plan-hovedetasje","Plantegning hovedetasje"],["plan-hems","Plantegning hems"]];
+const PLANS=[["plan-hovedetasje-no","Plantegning hovedetasje"],["plan-hems","Plantegning hems"]];
 const g=document.getElementById("gallery");
 let list=PHOTOS, idx=0, lastFocus=null;
 PHOTOS.forEach(([f,c,cls],i)=>{
