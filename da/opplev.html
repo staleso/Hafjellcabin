@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Oplev Hafjell – Hafjell Panorama</title>
+<meta name="description" content="Alpint, langrend, familiebakker og sommeraktiviteter lige ved hytten på Hafjell Panorama.">
+<meta property="og:image" content="https://solems.no/img/hf-topp-utsikt.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: photo-first page — slim sticky bar with back button and tabs, then a single column of rounded photos; portrait shots sit in pairs. */
+:root{
+  --bg:#0f0d0a; --bg-2:#201c16; --fg:#ece5d8; --muted:#a99f8e; --line:#3a3328;
+  --sage:#9fb3a0; --brass:#d2a65a;
+  --display:"Marcellus",Georgia,serif; --body:"Karla",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 var(--body)}
+[hidden]{display:none!important}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bar{position:sticky;top:0;z-index:20;background:rgba(15,13,10,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:960px;margin:0 auto;padding-block:0}
+.tn-links>a[aria-current="page"]{color:var(--fg);background:var(--bg-2)}
+.topnav{position:relative;z-index:21;background:rgba(23,20,15,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tn-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:18px;min-height:58px}
+.brand{font:400 1.15rem var(--display);color:var(--fg);text-decoration:none;white-space:nowrap;margin-right:auto}
+.tn-links{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.tn-links>a{color:#d7cfbf;text-decoration:none;font-size:.92rem;padding:8px 10px;border-radius:999px}
+.tn-links>a:hover{color:var(--fg);background:var(--bg-2)}
+.tn-links>a.tn-cta{background:var(--brass);color:#1b150c;font-weight:700;padding:8px 14px;margin-left:6px}
+.tn-links{order:1}.tn-inner>.lang{order:2;margin-left:4px}.tn-toggle{order:3}
+.tn-inner>.lang a{background:none}
+.tn-toggle{display:none;background:none;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:7px 14px;font:500 .78rem var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+@media (max-width:1140px){
+  .tn-toggle{display:block}
+  .tn-links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:2px;background:var(--bg);border-bottom:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+  .tn-links.open{display:flex}
+  .tn-links>a{padding:12px 10px;font-size:1rem}
+  .tn-links>a.tn-cta{margin:8px 0 0;text-align:center}
+  .tn-inner>.lang{order:1}
+}
+
+.bar-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.back{width:46px;height:46px;border-radius:999px;border:1px solid var(--line);background:var(--bg-2);color:var(--fg);display:grid;place-items:center;text-decoration:none;font-size:1.4rem;flex:none}
+.back:hover{border-color:var(--brass)}
+.tabs{display:flex;gap:28px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{background:none;border:0;color:var(--muted);font:500 1.08rem var(--body);padding:12px 0 14px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--brass)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--sage);outline-offset:3px}
+.lang{display:flex;gap:4px;font:500 .72rem var(--mono);letter-spacing:.1em}
+.lang a{color:var(--fg);text-decoration:none;padding:6px 9px;border:1px solid transparent;border-radius:999px}
+.lang a[aria-current="page"]{border-color:var(--sage);color:var(--sage)}
+main{max-width:960px;margin:0 auto;padding-block:14px 48px}
+.feed{display:grid;gap:12px}
+.feed img{display:block;width:100%;height:auto;border-radius:14px;background:var(--bg-2);cursor:zoom-in}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pair img{aspect-ratio:3/4;object-fit:cover;height:100%}
+.plan img{background:#f4f1ea;padding:10px}
+.note{font-size:.92rem;color:#d7cfbf;border-left:2px solid var(--brass);padding-left:12px;margin:2px 0 6px}
+
+/* Opplev Hafjell: full-bleed opener, then alternating text/photo bands */
+.ophero{position:relative;min-height:min(78vh,760px);display:grid;align-items:end;overflow:hidden}
+.ophero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ophero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,13,10,.05) 0%,rgba(15,13,10,.2) 45%,rgba(15,13,10,.92) 100%);pointer-events:none}
+.ophero .in{position:relative;z-index:1;max-width:1120px;margin:0 auto;width:100%;padding-block:0 52px;display:grid;gap:14px}
+.label{font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
+h1,h2{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(2.6rem,8vw,5.2rem)}
+h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+.lede{font-size:1.15rem;max-width:48ch;color:#e6dccb;margin:0}
+.band{padding-block:80px}
+.band.alt{background:var(--bg-2);border-block:1px solid var(--line)}
+.wrap{max-width:1120px;margin:0 auto}
+.split{display:grid;grid-template-columns:1fr 1.15fr;gap:52px;align-items:center}
+.split.rev>:first-child{order:2}
+.split>*{min-width:0}
+.copy{display:grid;gap:16px;max-width:52ch}
+.copy p{margin:0;color:#d7cfbf}
+.ph{border-radius:12px;overflow:hidden}
+.ph img{display:block;width:100%;height:100%;object-fit:cover}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.duo .ph{aspect-ratio:4/3}
+.trio{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:12px;aspect-ratio:16/10}
+.trio .ph:first-child{grid-row:span 2}
+.tall{max-width:440px;justify-self:center;aspect-ratio:1141/1600}
+.wide{aspect-ratio:1600/920}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{border-top:1px solid var(--brass);padding-top:16px;display:grid;gap:8px;align-content:start}
+.card h3{font:400 1.35rem var(--display);margin:0}
+.card p{margin:0;color:#d7cfbf}
+.card a{color:var(--brass)}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--brass);color:#1b150c;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:999px;width:max-content;max-width:100%}
+.cta.ghost{background:none;color:var(--fg);border:1px solid var(--brass)}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.final .wrap{display:grid;gap:18px;justify-items:start}
+.final p{margin:0;color:#d7cfbf}
+footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+@media (max-width:860px){.split{grid-template-columns:1fr;gap:28px}.split.rev>:first-child{order:0}.cards{grid-template-columns:1fr}.band{padding-block:56px}.trio{aspect-ratio:auto;grid-template-columns:1fr 1fr;grid-template-rows:auto}.trio .ph{aspect-ratio:4/3}.trio .ph:first-child{grid-column:1/-1;grid-row:auto}}
+.lang{display:flex;gap:4px;font:500 .72rem var(--mono);letter-spacing:.1em}.lang a{color:var(--fg);text-decoration:none;padding:6px 9px;border:1px solid transparent;border-radius:999px;background:rgba(23,20,15,.55)}.lang a:hover{border-color:var(--brass)}.lang a[aria-current="page"]{border-color:var(--sage);color:var(--sage)}@media (max-width:480px){header.gut h1{display:none}}.hero .lang{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(16px,env(safe-area-inset-right,0px))}
+</style>
+<link rel="alternate" hreflang="no" href="https://solems.no/opplev.html">
+<link rel="alternate" hreflang="en" href="https://solems.no/en/opplev.html">
+<link rel="alternate" hreflang="da" href="https://solems.no/da/opplev.html">
+<link rel="alternate" hreflang="x-default" href="https://solems.no/opplev.html">
+</head>
+<body>
+<header class="bar">
+  <nav class="topnav" aria-label="Hovedmenu">
+    <div class="tn-inner gut">
+      <a class="brand" href="./">Hafjell Panorama</a>
+      <nav class="lang" aria-label="Språk / Language"><a href="../opplev.html" hreflang="no" lang="no">NO</a><a href="../en/opplev.html" hreflang="en" lang="en">EN</a><a href="../da/opplev.html" hreflang="da" lang="da" aria-current="page">DA</a></nav>
+      <button type="button" class="tn-toggle" id="tnToggle" aria-expanded="false" aria-controls="tnLinks">Menu</button>
+      <div class="tn-links" id="tnLinks">
+        <a href="./#om">Om hytten</a><a href="./#rom">Værelser</a><a href="./#beliggenhet">Beliggenhed</a><a href="./#praktisk">Priser</a><a href="bilder.html">Billeder</a><a href="opplev.html" aria-current="page">Oplev Hafjell</a>
+        <a class="tn-cta" href="./#forespørsel">Ledige datoer</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="ophero">
+  <img src="../img/hf-topp-utsikt.jpg" alt="Familie på ski på toppen af Hafjell med udsigt over dalen">
+  <div class="in gut">
+    <span class="label">Hafjell · Øyer · Gudbrandsdalen</span>
+    <h1>Oplev Hafjell</h1>
+    <p class="lede">Pister og skiløjper lige ved hytten, udsigt over Gudbrandsdalen og aktiviteter for hele familien, vinter som sommer.</p>
+  </div>
+</section>
+
+<section class="band gut">
+  <div class="wrap split">
+    <div class="copy">
+      <span class="label">Alpint</span>
+      <h2>Ski in/ski out i et af Norges bedste skisportssteder</h2>
+      <p>Hafjell Alpinsenter var arena for de tekniske alpine discipliner under OL i Lillehammer i 1994. I dag er det et af Norges bedste skisportssteder med pister for alle niveauer.</p>
+      <p>Fra hytten kommer I direkte ud på pisterne og kan køre helt hjem igen efter sidste tur.</p>
+    </div>
+    <div class="duo">
+      <div class="ph"><img src="../img/hf-skilt.jpg" alt="Rustent skilt med teksten Hafjell Vidsyn i pisten" loading="lazy"></div>
+      <div class="ph"><img src="../img/hf-skilt-bakke.jpg" alt="Skiløber ved Vidsyn-skiltet med udsigt over dalen" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt gut">
+  <div class="wrap split rev">
+    <div class="copy">
+      <span class="label">Vidsyn</span>
+      <h2>Pause på toppen</h2>
+      <p>Vidsyn ligger på toppen af anlægget med vid udsigt over Gudbrandsdalen og fjeldene omkring. Et naturligt sted at holde pause midt på skidagen.</p>
+    </div>
+    <div class="ph wide"><img src="../img/hf-vidsyn.jpg" alt="Bygningen Vidsyn på toppen af pisten" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="band gut">
+  <div class="wrap split">
+    <div class="copy">
+      <span class="label">For hele familien</span>
+      <h2>Pister for store og små</h2>
+      <p>Brede nedkørsler på toppen og smalle løjper gennem granskoven gør, at både de mindste og de mest erfarne finder noget, der passer. Der er kort vej tilbage til hytten, når nogen har brug for en pause.</p>
+    </div>
+    <div class="trio">
+      <div class="ph"><img src="../img/hf-barn-loype.jpg" alt="Barn på ski i en løjpe gennem granskoven" loading="lazy"></div>
+      <div class="ph"><img src="../img/hf-familie-topp.jpg" alt="Familie samlet på toppen af pisten en klar vinterdag" loading="lazy"></div>
+      <div class="ph"><img src="../img/hf-taukrok.jpg" alt="Træklift i solskin med udsigt over dalen" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt gut">
+  <div class="wrap split rev">
+    <div class="copy">
+      <span class="label">Eftermiddag</span>
+      <h2>Sidste tur i aftensolen</h2>
+      <p>Eftermiddagssolen over Gudbrandsdalen er noget af det smukkeste, Hafjell har at byde på. Tag sidste tur ned mod hytten, mens solen går ned.</p>
+    </div>
+    <div class="ph tall"><img src="../img/hf-solnedgang.jpg" alt="Skiløber i solnedgang på toppen af Hafjell" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="band gut">
+  <div class="wrap cards">
+    <div class="card"><span class="label">Langrend</span><h3>Skiløjper lige uden for døren</h3><p>Langrendsløjperne starter lige ved hytten og fører ind i et stort løjpenet på fjeldet.</p><a href="bilder.html#kart">Se løjpekortet →</a></div>
+    <div class="card"><span class="label">Sommer og efterår</span><h3>Cykling, golf og fjeldture</h3><p>Om sommeren byder området på cykelture i varieret terræn, stier og naturoplevelser for hele familien. Hafjell Golf er en af Norges smukkeste golfbaner, og fjeldområder til topture ligger kort derfra.</p></div>
+    <div class="card"><span class="label">Lillehammer</span><h3>20 minutter til byen</h3><p>Lillehammer ligger cirka 20 minutter væk i bil med restauranter, butikker og kulturtilbud.</p></div>
+  </div>
+</section>
+
+<section class="band alt final gut">
+  <div class="wrap">
+    <h2>Klar til Hafjell?</h2>
+    <p>Hytten har plads til 12 gæster i syv soveværelser og ski in/ski out.</p>
+    <div class="btns"><a class="cta" href="./#forespørsel">Se ledige datoer</a><a class="cta ghost" href="./">Se hytten →</a></div>
+  </div>
+</section>
+
+<footer class="gut"><div class="wrap">Hafjell Panorama · Øyer, Innlandet, Norge</div></footer>
+<script>
+(function(){const t=document.getElementById("tnToggle"),l=document.getElementById("tnLinks");
+t.onclick=()=>{const o=l.classList.toggle("open");t.setAttribute("aria-expanded",o)};})();
+</script>
+</body>
+</html>
