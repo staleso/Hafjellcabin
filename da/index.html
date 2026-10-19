@@ -155,6 +155,8 @@ footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px sol
 .contact b{font:400 1.4rem var(--display)}
 .contact a{font-size:1.05rem;overflow-wrap:anywhere}
 footer a{color:var(--muted)}
+.planlink{color:var(--brass);margin-top:18px;display:inline-block}
+.plans .common{margin-top:12px}
 .plannote{font-size:.92rem;color:var(--fg);border-left:2px solid var(--brass);padding-left:12px}
 figure{margin:0}
 figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);padding-top:8px}
@@ -332,22 +334,16 @@ section,header.hero{scroll-margin-top:70px}
           <tr><td>Soveværelse 7<small>hems</small></td><td>2 × 120 cm</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="plans">
+      <span class="label">Fællesrum</span>
       <ul class="common">
         <li>Stue med spisestue og TV-krog</li>
         <li>Stue med billardbord og TV-krog</li>
         <li>Rummeligt køkken</li>
         <li>2 badeværelser med bruser og toilet</li>
       </ul>
-    </div>
-    <div class="plans">
-      <span class="label">Plantegning</span>
-      <div class="tabs" role="tablist">
-        <button type="button" role="tab" id="tab-main" aria-selected="true" data-plan="0">Stueetage</button>
-        <button type="button" role="tab" id="tab-hems" aria-selected="false" data-plan="1">Hems</button>
-      </div>
-      <button type="button" class="plan" id="planbtn" aria-label="Vis plantegning i fuld størrelse"><img id="planimg" src="../img/plan-hovedetasje.jpg" alt="Plantegning, stueetage"></button>
-      <p class="plannote">Bemærk: Plantegningen er ældre og viser to køkkener. I dag har hytten <b>ét køkken</b>, <b>to TV-stuer</b> og <b>stue med billardbord</b>.</p>
-      <p class="fine">Plantegningen er ikke målfast, og møblerne svarer ikke til den faktiske indretning.</p>
+      <a class="planlink" href="bilder.html#plantegning">Se plantegning →</a>
     </div>
     <div class="bedpics">
       <figure><img src="../img/soverom-a.jpg" alt="Soveværelse med seng, ternet hovedgærde og vindue" loading="lazy"><figcaption>Soveværelse i stueetagen</figcaption></figure>
@@ -682,7 +678,7 @@ document.querySelectorAll(".tabs button").forEach(t=>t.onclick=()=>{
   plan=+t.dataset.plan;document.querySelectorAll(".tabs button").forEach(x=>x.setAttribute("aria-selected",x===t?"true":"false"));
   const [f,c]=PLANS[plan];const im=document.getElementById("planimg");im.src="../img/"+f+".jpg";im.alt=c;
 });
-document.getElementById("planbtn").onclick=()=>openLb([PLANS[plan]],0);
+const pb=document.getElementById("planbtn");if(pb)pb.onclick=()=>openLb([PLANS[plan]],0);
 </script>
 
 <script>
