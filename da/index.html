@@ -213,8 +213,9 @@ figcaption{font:500 .72rem var(--mono);letter-spacing:.06em;color:var(--muted);p
 .tn-inner>.lang a{background:none}
 .tn-toggle{display:none;background:none;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:7px 14px;font:500 .78rem var(--mono);letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
 section,header.hero{scroll-margin-top:70px}
-.bedpics{grid-template-columns:repeat(2,1fr)!important}
-.bedpics img{aspect-ratio:3/2!important}
+.bedpics{grid-template-columns:repeat(3,1fr)!important}
+.bedpics img{aspect-ratio:4/5!important}
+@media (max-width:600px){.bedpics{grid-template-columns:1fr 1fr!important}.bedpics figure:last-child{grid-column:1/-1}.bedpics figure:last-child img{aspect-ratio:4/3!important}}
 @media (max-width:1140px){
   .tn-toggle{display:block}
   .tn-links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:2px;background:var(--bg);border-bottom:1px solid var(--line);padding:10px max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
@@ -351,6 +352,7 @@ section,header.hero{scroll-margin-top:70px}
     <div class="bedpics">
       <figure><img src="../img/soverom-a.jpg" alt="Soveværelse med seng, ternet hovedgærde og vindue" loading="lazy"><figcaption>Soveværelse i stueetagen</figcaption></figure>
       <figure><img src="../img/hems-sovesal.jpg" alt="Soveværelse på hemsen med alkovesenge langs væggen" loading="lazy"><figcaption>Alkovesenge på hemsen</figcaption></figure>
+      <figure><img src="../img/bad.jpg" alt="Badeværelse med bruser, væghængt toilet og håndvask med rundt spejl" loading="lazy"><figcaption>Et af to badeværelser</figcaption></figure>
     </div>
   </div>
 </section>
