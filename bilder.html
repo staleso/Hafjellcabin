@@ -3,54 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="claude:viewport-fit-sides" content="cover">
-<title>Bilder – Hafjell Panorama</title>
+<title>Hafjell Panorama</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: one-screen photo viewer — slim header, the stage fills the rest, thumbnail rail at the bottom. Same dark palette as the main page. */
+/* Layout: photo-first page — slim sticky bar with back button and tabs, then a single column of rounded photos; portrait shots sit in pairs. */
 :root{
-  --bg:#17140f; --bg-2:#201c16; --fg:#ece5d8; --muted:#a99f8e; --line:#3a3328;
+  --bg:#0f0d0a; --bg-2:#201c16; --fg:#ece5d8; --muted:#a99f8e; --line:#3a3328;
   --sage:#9fb3a0; --brass:#d2a65a;
   --display:"Marcellus",Georgia,serif; --body:"Karla",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
   color-scheme:dark;
-  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 var(--body);display:grid;grid-template-rows:auto 1fr auto auto;overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 var(--body)}
 [hidden]{display:none!important}
 .gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:14px;border-bottom:1px solid var(--line)}
-header a{color:var(--fg);text-decoration:none;font:500 .78rem var(--mono);letter-spacing:.1em;text-transform:uppercase}
-header a:hover{color:var(--brass)}
-header h1{font:400 1.2rem var(--display);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.count{font:500 .78rem var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
-
-.stage{position:relative;min-height:0;overflow:hidden;touch-action:pan-y}
-.track{display:flex;height:100%;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
-.slide{flex:0 0 100%;height:100%;display:grid;place-items:center;padding:16px}
-.slide img{max-width:100%;max-height:100%;object-fit:contain;border-radius:3px;user-select:none;-webkit-user-drag:none}
-.slide.plan img{background:#f4f1ea;padding:8px}
-.nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:999px;border:1px solid var(--line);background:rgba(32,28,22,.78);color:var(--fg);font-size:1.6rem;cursor:pointer;display:grid;place-items:center}
-.nav:hover{border-color:var(--brass);color:var(--brass)}
-.prev{left:max(16px,env(safe-area-inset-left,0px))}
-.next{right:max(16px,env(safe-area-inset-right,0px))}
+.bar{position:sticky;top:0;z-index:20;background:rgba(15,13,10,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding-top:env(safe-area-inset-top,0px);border-bottom:1px solid var(--line)}
+.bar-in{max-width:960px;margin:0 auto;display:grid;gap:6px;padding-block:12px 0}
+.bar-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.back{width:46px;height:46px;border-radius:999px;border:1px solid var(--line);background:var(--bg-2);color:var(--fg);display:grid;place-items:center;text-decoration:none;font-size:1.4rem;flex:none}
+.back:hover{border-color:var(--brass)}
+.tabs{display:flex;gap:28px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{background:none;border:0;color:var(--muted);font:500 1.08rem var(--body);padding:12px 0 14px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--fg);border-bottom-color:var(--brass)}
 button:focus-visible,a:focus-visible{outline:2px solid var(--sage);outline-offset:3px}
-
-.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:10px;flex-wrap:wrap}
-.cap{font:400 1.15rem var(--display);min-width:0}
-.cap small{display:block;font:500 .7rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--sage)}
-.play{background:none;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:7px 14px;font:500 .75rem var(--mono);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
-.play[aria-pressed="true"]{background:var(--sage);color:#141a14;border-color:var(--sage)}
-
-.thumbs{display:flex;gap:8px;overflow-x:auto;padding-block:4px 14px;scrollbar-width:thin}
-.thumbs button{flex:0 0 auto;width:96px;height:64px;padding:0;border:2px solid transparent;border-radius:3px;overflow:hidden;cursor:pointer;background:var(--bg-2);opacity:.55;transition:opacity .2s}
-.thumbs button[aria-current="true"]{border-color:var(--brass);opacity:1}
-.thumbs button:hover{opacity:1}
-.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
-@media (max-width:600px){.nav{width:42px;height:42px;font-size:1.3rem}.thumbs button{width:72px;height:50px}.slide{padding:8px}}
-@media (prefers-reduced-motion:reduce){.track{transition:none}}
+.lang{display:flex;gap:4px;font:500 .72rem var(--mono);letter-spacing:.1em}
+.lang a{color:var(--fg);text-decoration:none;padding:6px 9px;border:1px solid transparent;border-radius:999px}
+.lang a[aria-current="page"]{border-color:var(--sage);color:var(--sage)}
+main{max-width:960px;margin:0 auto;padding-block:14px 48px}
+.feed{display:grid;gap:12px}
+.feed img{display:block;width:100%;height:auto;border-radius:14px;background:var(--bg-2);cursor:zoom-in}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pair img{aspect-ratio:3/4;object-fit:cover;height:100%}
+.plan img{background:#f4f1ea;padding:10px}
+.note{font-size:.92rem;color:#d7cfbf;border-left:2px solid var(--brass);padding-left:12px;margin:2px 0 6px}
+/* fullscreen swipe viewer */
+.viewer{position:fixed;inset:0;z-index:50;background:#000;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior:contain}
+.viewer::-webkit-scrollbar{display:none}
+.viewer figure{flex:0 0 100%;height:100%;margin:0;display:grid;place-items:center;scroll-snap-align:start;scroll-snap-stop:always;padding:calc(env(safe-area-inset-top,0px) + 60px) 8px calc(env(safe-area-inset-bottom,0px) + 40px)}
+.viewer img{max-width:100%;max-height:100%;object-fit:contain;border-radius:4px;min-height:0}
+.vclose,.vnav{position:fixed;z-index:51;width:46px;height:46px;border-radius:999px;border:1px solid rgba(255,255,255,.25);background:rgba(20,20,20,.7);color:#fff;font-size:1.4rem;cursor:pointer;display:grid;place-items:center}
+.vclose{top:calc(env(safe-area-inset-top,0px) + 10px);right:max(12px,env(safe-area-inset-right,0px))}
+.vnav{top:50%;transform:translateY(-50%)}
+.vprev{left:max(12px,env(safe-area-inset-left,0px))}.vnext{right:max(12px,env(safe-area-inset-right,0px))}
+.vcount{position:fixed;z-index:51;top:calc(env(safe-area-inset-top,0px) + 22px);left:50%;transform:translateX(-50%);font:500 .78rem var(--mono);color:#ddd;font-variant-numeric:tabular-nums}
+@media (max-width:700px){.vnav{display:none}.tabs{gap:22px}}
 .lang{display:flex;gap:4px;font:500 .72rem var(--mono);letter-spacing:.1em}.lang a{color:var(--fg);text-decoration:none;padding:6px 9px;border:1px solid transparent;border-radius:999px;background:rgba(23,20,15,.55)}.lang a:hover{border-color:var(--brass)}.lang a[aria-current="page"]{border-color:var(--sage);color:var(--sage)}@media (max-width:480px){header.gut h1{display:none}}.hero .lang{position:absolute;z-index:2;top:calc(env(safe-area-inset-top,0px) + 16px);right:max(16px,env(safe-area-inset-right,0px))}
 </style>
 <link rel="alternate" hreflang="no" href="https://solems.no/bilder.html">
@@ -59,83 +57,97 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--sage);outline-offse
 <link rel="alternate" hreflang="x-default" href="https://solems.no/bilder.html">
 </head>
 <body>
-<header class="gut">
-  <a href="./">← Forsiden</a>
-  <h1>Hafjell Panorama</h1>
-  <nav class="lang" aria-label="Språk / Language"><a href="bilder.html" hreflang="no" lang="no" aria-current="page">NO</a><a href="en/bilder.html" hreflang="en" lang="en">EN</a><a href="da/bilder.html" hreflang="da" lang="da">DA</a></nav>
-  <span class="count" id="count">1 / 26</span>
+<header class="bar gut">
+  <div class="bar-in">
+    <div class="bar-top">
+      <a class="back" href="./" id="back">‹</a>
+      <nav class="lang" aria-label="Språk / Language"><a href="bilder.html" hreflang="no" lang="no" aria-current="page">NO</a><a href="en/bilder.html" hreflang="en" lang="en">EN</a><a href="da/bilder.html" hreflang="da" lang="da">DA</a></nav>
+    </div>
+    <div class="tabs" role="tablist" id="tabs">
+      <button type="button" role="tab" data-tab="galleri" aria-selected="true"></button>
+      <button type="button" role="tab" data-tab="plantegning" aria-selected="false"></button>
+      <button type="button" role="tab" data-tab="kart" aria-selected="false"></button>
+    </div>
+  </div>
 </header>
-
-<div class="stage" id="stage" aria-roledescription="karusell" aria-label="Bilder av hytta">
-  <div class="track" id="track"></div>
-  <button type="button" class="nav prev" id="prev" aria-label="Forrige bilde">‹</button>
-  <button type="button" class="nav next" id="next" aria-label="Neste bilde">›</button>
-</div>
-
-<div class="bar gut">
-  <div class="cap" id="cap" aria-live="polite"></div>
-  <button type="button" class="play" id="play" aria-pressed="false">Lysbildefremvisning</button>
-</div>
-<div class="thumbs gut" id="thumbs"></div>
-
+<main class="gut">
+  <div class="feed" id="p-galleri"></div>
+  <div class="feed" id="p-plantegning" hidden></div>
+  <div class="feed" id="p-kart" hidden></div>
+</main>
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true"></div>
+<button type="button" class="vclose" id="vClose" hidden>×</button>
+<button type="button" class="vnav vprev" id="vPrev" hidden>‹</button>
+<button type="button" class="vnav vnext" id="vNext" hidden>›</button>
+<span class="vcount" id="vCount" hidden></span>
 <script>
-const PHOTOS=[
-  ["eksterior","Hytta sett utenfra","Ute"],
-  ["tun-vinter","Tunet en klar vinterdag","Ute"],
-  ["tun-solnedgang","Kveldssol over tunet","Ute"],
-  ["tun-forste-sno","Første snøen på tunet","Ute"],
-  ["ute-sommer","Sensommer med utsikt over dalen","Ute"],
-  ["ute-vinter","Snørik vinter","Ute"],
-  ["ute-host","Høst i lia","Ute"],
-  ["kjokken-oy","Romslig kjøkken med stor kjøkkenøy","Kjøkken"],
-  ["kjokken-stue","Kjøkken og sosial sone","Kjøkken"],
-  ["salong","Sosial sone på kjøkkenet","Kjøkken"],
-  ["spisestue-peis","Spisestue og TV-krok","Spisestue"],
-  ["spisestue","Spisestue med peis","Spisestue"],
-  ["trapp-spisestue","Trapp til hemsen og spisestue","Spisestue"],
-  ["biljard","Stue med biljardbord og TV-krok","Stue"],
-  ["biljard-stue","Biljardbord, peis og sofakrok","Stue"],
-  ["entre","Entré","Entré"],
-  ["soverom-a","Soverom i hovedetasjen","Soverom"],
-  ["soverom-b","Soverom i hovedetasjen","Soverom"],
-  ["hems-sovesal","Alkovesenger på hemsen","Soverom"],
-  ["hems-soverom-lys","Soverom på hemsen","Soverom"],
-  ["hems-soverom-morkt","Soverom på hemsen","Soverom"],
-  ["flyfoto-sommer","Sentralt på Hafjell Panorama, sommer","Beliggenhet"],
-  ["flyfoto-vinter","Sentralt på Hafjell Panorama, vinter","Beliggenhet"],
-  ["loypekart","Løypekart: pilen viser hvor hytta ligger","Beliggenhet"],
-  ["plan-hovedetasje","Plantegning hovedetasje (eldre – i dag ett kjøkken, to TV-stuer og biljard)","Planløsning"],
-  ["plan-hems","Plantegning hems","Planløsning"],
-];
-const track=document.getElementById("track"),thumbs=document.getElementById("thumbs");
-let i=0,timer=null;
-PHOTOS.forEach(([f,c,k],n)=>{
-  const s=document.createElement("div");s.className="slide"+(f.startsWith("plan")?" plan":"");
-  s.setAttribute("role","group");s.setAttribute("aria-roledescription","bilde");s.setAttribute("aria-label",(n+1)+" av "+PHOTOS.length);
-  const im=document.createElement("img");im.src="img/"+f+".jpg";im.alt=c;im.draggable=false;if(n>1)im.loading="lazy";s.append(im);track.append(s);
-  const b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Vis bilde "+(n+1)+": "+c);
-  const t=document.createElement("img");t.src="img/"+f+".jpg";t.alt="";t.loading="lazy";b.append(t);b.onclick=()=>{stop();go(n)};thumbs.append(b);
-});
-function go(n){
-  i=(n+PHOTOS.length)%PHOTOS.length;
-  track.style.transform="translateX("+(-i*100)+"%)";
-  const [,c,k]=PHOTOS[i];
-  const cap=document.getElementById("cap");cap.replaceChildren();const sm=document.createElement("small");sm.textContent=k;cap.append(sm,document.createTextNode(c));
-  document.getElementById("count").textContent=(i+1)+" / "+PHOTOS.length;
-  [...thumbs.children].forEach((b,j)=>b.setAttribute("aria-current",j===i?"true":"false"));
-  const tb=thumbs.children[i];tb.scrollIntoView({block:"nearest",inline:"center",behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});
+(function(){
+const LANG=(document.documentElement.lang||"no").slice(0,2);
+const ROOT=/\/(en|da)\//.test(location.pathname)?"../":"";
+const T={
+ no:{title:"Bilder – Hafjell Panorama",back:"Tilbake til forsiden",tabs:["Galleri","Plantegning","Kart"],close:"Lukk",prev:"Forrige bilde",next:"Neste bilde",
+   note:"Plantegningen for hovedetasjen er eldre og viser to kjøkken. I dag har hytta ett kjøkken, to TV-stuer og stue med biljardbord.",
+   alt:{"tun-vinter":"Tunet en klar vinterdag","kjokken-oy":"Kjøkken med stor kjøkkenøy","kjokken-stue":"Kjøkken og sosial sone","salong":"Sittegruppe ved kjøkkenet","spisestue-peis":"Spisestue og TV-krok","spisestue":"Spisestue med peis","trapp-spisestue":"Trapp til hemsen og spisestue","biljard":"Stue med biljardbord","biljard-stue":"Biljardbord, peis og sofakrok","entre":"Entré","soverom-a":"Soverom","hems-sovesal":"Alkovesenger på hemsen","soverom-b":"Soverom","hems-soverom-lys":"Soverom på hemsen","hems-soverom-morkt":"Soverom på hemsen","ute-sommer":"Hytta om sensommeren","ute-host":"Hytta om høsten","tun-solnedgang":"Kveldssol over tunet","tun-forste-sno":"Første snøen","ute-vinter":"Hytta om vinteren","eksterior":"Hytta sett utenfra","plan-hovedetasje":"Plantegning hovedetasje","plan-hems":"Plantegning hems","loypekart":"Løypekart med hyttas plassering","flyfoto-sommer":"Flyfoto om sommeren","flyfoto-vinter":"Flyfoto om vinteren"}},
+ en:{title:"Photos – Hafjell Panorama",back:"Back to the home page",tabs:["Gallery","Floor plan","Map"],close:"Close",prev:"Previous photo",next:"Next photo",
+   note:"The main-floor plan is older and shows two kitchens. Today the cabin has one kitchen, two TV lounges and a lounge with a pool table.",
+   alt:{"tun-vinter":"A clear winter day","kjokken-oy":"Kitchen with large island","kjokken-stue":"Kitchen and lounge area","salong":"Seating area by the kitchen","spisestue-peis":"Dining room and TV corner","spisestue":"Dining room with wood stove","trapp-spisestue":"Stairs to the loft and dining room","biljard":"Lounge with pool table","biljard-stue":"Pool table, wood stove and sofa","entre":"Entrance hall","soverom-a":"Bedroom","hems-sovesal":"Alcove beds on the loft","soverom-b":"Bedroom","hems-soverom-lys":"Loft bedroom","hems-soverom-morkt":"Loft bedroom","ute-sommer":"The cabin in late summer","ute-host":"The cabin in autumn","tun-solnedgang":"Evening sun over the yard","tun-forste-sno":"First snow","ute-vinter":"The cabin in winter","eksterior":"The cabin from outside","plan-hovedetasje":"Floor plan, main floor","plan-hems":"Floor plan, loft","loypekart":"Trail map showing the cabin","flyfoto-sommer":"Aerial photo in summer","flyfoto-vinter":"Aerial photo in winter"}},
+ da:{title:"Billeder – Hafjell Panorama",back:"Tilbage til forsiden",tabs:["Galleri","Plantegning","Kort"],close:"Luk",prev:"Forrige billede",next:"Næste billede",
+   note:"Plantegningen for stueetagen er ældre og viser to køkkener. I dag har hytten ét køkken, to TV-stuer og stue med billardbord.",
+   alt:{"tun-vinter":"En klar vinterdag","kjokken-oy":"Køkken med stor køkkenø","kjokken-stue":"Køkken og hyggekrog","salong":"Siddegruppe ved køkkenet","spisestue-peis":"Spisestue og TV-krog","spisestue":"Spisestue med pejs","trapp-spisestue":"Trappe til hemsen og spisestue","biljard":"Stue med billardbord","biljard-stue":"Billardbord, pejs og sofa","entre":"Entré","soverom-a":"Soveværelse","hems-sovesal":"Alkovesenge på hemsen","soverom-b":"Soveværelse","hems-soverom-lys":"Soveværelse på hemsen","hems-soverom-morkt":"Soveværelse på hemsen","ute-sommer":"Hytten i sensommeren","ute-host":"Hytten om efteråret","tun-solnedgang":"Aftensol over gårdspladsen","tun-forste-sno":"Den første sne","ute-vinter":"Hytten om vinteren","eksterior":"Hytten set udefra","plan-hovedetasje":"Plantegning, stueetage","plan-hems":"Plantegning, hems","loypekart":"Løjpekort med hyttens placering","flyfoto-sommer":"Luftfoto om sommeren","flyfoto-vinter":"Luftfoto om vinteren"}}
+}[LANG];
+// [file, width, height]; a nested pair = two portrait photos side by side
+const W=[1600,1200], P=[1200,1600];
+const PAGES={
+ galleri:[["tun-vinter",...W],["kjokken-oy",...W],["kjokken-stue",...W],["salong",...W],["spisestue-peis",...W],["spisestue",...W],["trapp-spisestue",...W],
+   ["biljard",...W],["biljard-stue",...W],["entre",...W],[["soverom-a",...P],["hems-sovesal",...P]],["soverom-b",...W],[["hems-soverom-lys",...P],["hems-soverom-morkt",...P]],
+   ["ute-sommer",...W],["ute-host",...W],["tun-solnedgang",...W],["tun-forste-sno",...W],["ute-vinter",...W],["eksterior",...W]],
+ plantegning:[["plan-hovedetasje",1131,1600],["plan-hems",1131,1600]],
+ kart:[["loypekart",775,474],["flyfoto-sommer",1600,1066],["flyfoto-vinter",1075,1066]]
+};
+document.title=T.title;
+document.getElementById("back").setAttribute("aria-label",T.back);
+const tabs=[...document.querySelectorAll("#tabs button")];tabs.forEach((b,i)=>b.textContent=T.tabs[i]);
+function img([f,w,h],list,eager){
+  const im=document.createElement("img");im.src=ROOT+"img/"+f+".jpg";im.alt=T.alt[f]||"";im.width=w;im.height=h;
+  if(!eager)im.loading="lazy";im.decoding="async";
+  const i=list.length;list.push(f);im.onclick=()=>openV(list,i);return im;
 }
-document.getElementById("prev").onclick=()=>{stop();go(i-1)};
-document.getElementById("next").onclick=()=>{stop();go(i+1)};
-document.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"){stop();go(i-1)}if(e.key==="ArrowRight"){stop();go(i+1)}});
-const play=document.getElementById("play");
-function stop(){if(timer){clearInterval(timer);timer=null;play.setAttribute("aria-pressed","false");play.textContent="Lysbildefremvisning"}}
-play.onclick=()=>{if(timer)return stop();timer=setInterval(()=>go(i+1),4500);play.setAttribute("aria-pressed","true");play.textContent="Pause"};
-// swipe
-const stage=document.getElementById("stage");let x0=null,y0=null;
-stage.addEventListener("pointerdown",e=>{x0=e.clientX;y0=e.clientY});
-stage.addEventListener("pointerup",e=>{if(x0===null)return;const dx=e.clientX-x0,dy=e.clientY-y0;x0=null;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){stop();go(i+(dx<0?1:-1))}});
-const start=location.hash.match(/^#b(\d+)$/);go(start?+start[1]-1:0);
+Object.entries(PAGES).forEach(([key,items])=>{
+  const box=document.getElementById("p-"+key),list=[];
+  if(key==="plantegning"){const p=document.createElement("p");p.className="note";p.textContent=T.note;box.append(p)}
+  items.forEach((it,n)=>{
+    if(Array.isArray(it[0])){const d=document.createElement("div");d.className="pair";it.forEach(x=>d.append(img(x,list,false)));box.append(d);return}
+    const el=img(it,list,key==="galleri"&&n<2);
+    if(key==="plantegning"){const d=document.createElement("div");d.className="plan";d.append(el);box.append(d)}else box.append(el);
+  });
+});
+function show(key,push){
+  tabs.forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===key?"true":"false"));
+  Object.keys(PAGES).forEach(k=>document.getElementById("p-"+k).hidden=k!==key);
+  if(push)history.replaceState(null,"",key==="galleri"?location.pathname:"#"+key);
+  window.scrollTo(0,0);
+}
+tabs.forEach(b=>b.onclick=()=>show(b.dataset.tab,true));
+const h=location.hash.slice(1);if(PAGES[h])show(h,false);
+
+const v=document.getElementById("viewer"),vc=document.getElementById("vClose"),vp=document.getElementById("vPrev"),vn=document.getElementById("vNext"),cnt=document.getElementById("vCount");
+vc.setAttribute("aria-label",T.close);vp.setAttribute("aria-label",T.prev);vn.setAttribute("aria-label",T.next);
+let cur=[],last=null;
+function openV(list,i){
+  cur=list;last=document.activeElement;v.replaceChildren();
+  list.forEach(f=>{const fg=document.createElement("figure");const im=document.createElement("img");im.src=ROOT+"img/"+f+".jpg";im.alt=T.alt[f]||"";fg.append(im);v.append(fg)});
+  [v,vc,cnt].forEach(e=>e.hidden=false);[vp,vn].forEach(e=>e.hidden=list.length<2);
+  document.body.style.overflow="hidden";
+  requestAnimationFrame(()=>{v.scrollLeft=i*v.clientWidth;upd()});vc.focus();
+}
+const idx=()=>Math.round(v.scrollLeft/v.clientWidth);
+function upd(){cnt.textContent=(idx()+1)+" / "+cur.length}
+function step(d){const n=(idx()+d+cur.length)%cur.length;v.scrollTo({left:n*v.clientWidth,behavior:"smooth"})}
+function closeV(){[v,vc,vp,vn,cnt].forEach(e=>e.hidden=true);v.replaceChildren();document.body.style.overflow="";last&&last.focus()}
+v.addEventListener("scroll",()=>requestAnimationFrame(upd),{passive:true});
+vc.onclick=closeV;vp.onclick=()=>step(-1);vn.onclick=()=>step(1);
+document.addEventListener("keydown",e=>{if(v.hidden)return;if(e.key==="Escape")closeV();if(e.key==="ArrowLeft")step(-1);if(e.key==="ArrowRight")step(1)});
+})();
 </script>
 </body>
 </html>
