@@ -87,7 +87,9 @@ h2{font-size:clamp(1.8rem,4vw,2.6rem)}
 .trio .ph:first-child{grid-row:span 2}
 .tall{max-width:440px;justify-self:center;aspect-ratio:1141/1600}
 .wide{aspect-ratio:1600/920}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:28px 32px}
+.card.full{grid-column:1/-1;max-width:62ch}
+.cimg{aspect-ratio:4/3;margin-bottom:6px}.cduo{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cduo .cimg{aspect-ratio:2/3}
 .card{border-top:1px solid var(--brass);padding-top:16px;display:grid;gap:8px;align-content:start}
 .card h3{font:400 1.35rem var(--display);margin:0}
 .card p{margin:0;color:#d7cfbf}
@@ -184,9 +186,9 @@ footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px sol
 
 <section class="band gut">
   <div class="wrap cards">
-    <div class="card"><span class="label">Langrend</span><h3>Skiløjper lige uden for døren</h3><p>Langrendsløjperne starter lige ved hytten og fører ind i et stort løjpenet på fjeldet.</p><a href="bilder.html#kart">Se løjpekortet →</a></div>
-    <div class="card"><span class="label">Sommer og efterår</span><h3>Cykling, golf og fjeldture</h3><p>Om sommeren byder området på cykelture i varieret terræn, stier og naturoplevelser for hele familien. Hafjell Golf er en af Norges smukkeste golfbaner, og fjeldområder til topture ligger kort derfra.</p></div>
-    <div class="card"><span class="label">Lillehammer</span><h3>20 minutter til byen</h3><p>Lillehammer ligger cirka 20 minutter væk i bil med restauranter, butikker og kulturtilbud.</p></div>
+    <div class="card"><div class="ph cimg"><img src="../img/hf-langrenn.jpg" alt="Præpareret langrendsløjpe mellem snedækkede grantræer" loading="lazy"></div><span class="label">Langrend</span><h3>Skiløjper lige uden for døren</h3><p>Langrendsløjperne starter lige ved hytten og fører ind i et stort løjpenet på fjeldet.</p><a href="bilder.html#kart">Se løjpekortet →</a></div>
+    <div class="card"><div class="cduo"><div class="ph cimg"><img src="../img/hf-golf.jpg" alt="Golfbane omgivet af birke- og granskov" loading="lazy"></div><div class="ph cimg"><img src="../img/hf-golf-green.jpg" alt="Green på golfbanen en sommerdag" loading="lazy"></div></div><span class="label">Sommer og efterår</span><h3>Cykling, golf og fjeldture</h3><p>Om sommeren byder området på cykelture i varieret terræn, stier og naturoplevelser for hele familien. Hafjell Golf er en af Norges smukkeste golfbaner, og fjeldområder til topture ligger kort derfra.</p></div>
+    <div class="card full"><span class="label">Lillehammer</span><h3>20 minutter til byen</h3><p>Lillehammer ligger cirka 20 minutter væk i bil med restauranter, butikker og kulturtilbud.</p></div>
   </div>
 </section>
 
