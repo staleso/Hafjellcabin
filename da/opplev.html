@@ -58,6 +58,7 @@ main{max-width:960px;margin:0 auto;padding-block:14px 48px}
 .feed img{display:block;width:100%;height:auto;border-radius:14px;background:var(--bg-2);cursor:zoom-in}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .pair img{aspect-ratio:3/4;object-fit:cover;height:100%}
+.feed>img.port{max-width:min(100%,600px);justify-self:center}
 .plan img{background:#f4f1ea;padding:10px}
 .note{font-size:.92rem;color:#d7cfbf;border-left:2px solid var(--brass);padding-left:12px;margin:2px 0 6px}
 
@@ -89,6 +90,8 @@ h2{font-size:clamp(1.8rem,4vw,2.6rem)}
 .wide{aspect-ratio:1600/920}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 28px}
 .card.full{grid-column:1/-1;max-width:62ch}
+.mood{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.mood .ph{aspect-ratio:3/4}
+@media (max-width:860px){.mood{grid-template-columns:1fr 1fr}}
 .cimg{aspect-ratio:4/3;margin-bottom:6px}.cduo{display:grid;grid-template-columns:1fr 1fr;gap:8px}.cduo .cimg{aspect-ratio:2/3}
 .card{border-top:1px solid var(--brass);padding-top:16px;display:grid;gap:8px;align-content:start}
 .card h3{font:400 1.35rem var(--display);margin:0}
@@ -181,6 +184,18 @@ footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px sol
       <p>Eftermiddagssolen over Gudbrandsdalen er noget af det smukkeste, Hafjell har at byde på. Tag sidste tur ned mod hytten, mens solen går ned.</p>
     </div>
     <div class="ph tall"><img src="../img/hf-solnedgang.jpg" alt="Skiløber i solnedgang på toppen af Hafjell" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="band alt gut">
+  <div class="wrap">
+    <span class="label">Stemninger fra fjeldet</span>
+    <div class="mood">
+      <div class="ph"><img src="../img/sv-skilop.jpg" alt="Barn på ski i nysne mellem snedækkede grantræer" loading="lazy"></div>
+      <div class="ph"><img src="../img/sv-spor.jpg" alt="Harespor i sneen mod lav vintersol" loading="lazy"></div>
+      <div class="ph"><img src="../img/sv-utsikt.jpg" alt="Udsigt mellem grangrene mod fjeldene mod nord" loading="lazy"></div>
+      <div class="ph"><img style="object-position:80% 50%" src="../img/sv-snowboard.jpg" alt="Barn på snowboard på et hop med udsigt over dalen" loading="lazy"></div>
+    </div>
   </div>
 </section>
 
