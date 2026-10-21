@@ -35,16 +35,18 @@ p{margin:0}
 
 /* hero */
 .hero{position:relative;min-height:min(86vh,820px);display:grid;align-items:end;overflow:hidden}
-.hero-track{position:absolute;inset:0;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
-.hero-track::-webkit-scrollbar{display:none}
-.hero-track img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;scroll-snap-stop:always;user-select:none;-webkit-user-drag:none}
+.hero-track{position:absolute;inset:0;overflow:hidden;touch-action:pan-y;background:var(--bg)}
+.hero-track img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.02);transition:opacity 1.6s ease,transform 0s linear 1.6s;user-select:none;-webkit-user-drag:none;will-change:opacity,transform}
+.hero-track img.on{opacity:1;transform:scale(1.09);transition:opacity 1.6s ease,transform 9s cubic-bezier(.25,.1,.25,1)}
+.hero-track img:nth-child(3n+1){transform-origin:30% 40%}.hero-track img:nth-child(3n+2){transform-origin:70% 35%}.hero-track img:nth-child(3n){transform-origin:50% 70%}
+@media (prefers-reduced-motion:reduce){.hero-track img,.hero-track img.on{transform:none;transition:opacity .4s ease}}
 .hnav{position:absolute;z-index:3;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:999px;border:1px solid rgba(236,229,216,.35);background:rgba(23,20,15,.55);color:var(--fg);font-size:1.5rem;cursor:pointer;display:grid;place-items:center}
 .hnav:hover{border-color:var(--brass);color:var(--brass)}
 .hprev{left:max(16px,env(safe-area-inset-left,0px))}.hnext{right:max(16px,env(safe-area-inset-right,0px))}
 .hcount{position:absolute;z-index:3;right:max(16px,env(safe-area-inset-right,0px));bottom:20px;font:500 .75rem var(--mono);letter-spacing:.08em;background:rgba(23,20,15,.6);padding:5px 10px;border-radius:999px;font-variant-numeric:tabular-nums}
 .hdots{position:absolute;z-index:3;left:50%;transform:translateX(-50%);bottom:22px;display:flex;gap:6px}
-.hdots i{width:6px;height:6px;border-radius:50%;background:rgba(236,229,216,.4)}
-.hdots i.on{background:var(--fg)}
+.hdots i{width:6px;height:6px;border-radius:999px;background:rgba(236,229,216,.4);transition:width .6s ease,background .6s ease;cursor:pointer}
+.hdots i.on{width:22px;background:var(--fg)}
 .hero .inner{pointer-events:none}.hero .inner a{pointer-events:auto}
 @media (max-width:600px){.hnav{display:none}.hdots{display:none}.hcount{top:calc(env(safe-area-inset-top,0px) + 74px);bottom:auto}}
 .hero::after{pointer-events:none;content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,20,15,.15) 0%,rgba(23,20,15,.25) 45%,rgba(23,20,15,.95) 100%)}
@@ -693,16 +695,23 @@ l.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{l.classList.r
 </script>
 <script>
 (function(){const t=document.getElementById("heroTrack");if(!t)return;
-const n=t.children.length,c=document.getElementById("hCount"),d=document.getElementById("hDots");
-for(let i=0;i<n;i++)d.append(document.createElement("i"));
-const cur=()=>Math.round(t.scrollLeft/t.clientWidth);
-const go=i=>t.scrollTo({left:((i+n)%n)*t.clientWidth,behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});
-let raf;function upd(){const i=cur();c.textContent=(i+1)+" / "+n;[...d.children].forEach((e,j)=>e.classList.toggle("on",j===i))}
-t.addEventListener("scroll",()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(upd)},{passive:true});
-document.getElementById("hPrev").onclick=()=>go(cur()-1);
-document.getElementById("hNext").onclick=()=>go(cur()+1);
-t.tabIndex=0;t.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")go(cur()-1);if(e.key==="ArrowRight")go(cur()+1)});
-upd();})();
+const im=[...t.children],n=im.length,c=document.getElementById("hCount"),d=document.getElementById("hDots"),hero=t.parentElement;
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches,DELAY=6500;
+let i=0,timer=null,hover=false;
+for(let k=0;k<n;k++){const e=document.createElement("i");e.onclick=()=>{show(k);restart()};d.append(e)}
+function show(k){i=(k+n)%n;im.forEach((e,j)=>e.classList.toggle("on",j===i));c.textContent=(i+1)+" / "+n;[...d.children].forEach((e,j)=>e.classList.toggle("on",j===i));
+  const nx=im[(i+1)%n];if(nx.loading==="lazy")nx.loading="eager";}
+function stop(){clearInterval(timer);timer=null}
+function start(){if(RM||timer||hover||document.hidden)return;timer=setInterval(()=>show(i+1),DELAY)}
+function restart(){stop();start()}
+document.getElementById("hPrev").onclick=()=>{show(i-1);restart()};
+document.getElementById("hNext").onclick=()=>{show(i+1);restart()};
+t.tabIndex=0;t.addEventListener("keydown",e=>{if(e.key==="ArrowLeft"){show(i-1);restart()}if(e.key==="ArrowRight"){show(i+1);restart()}});
+let x0=null,y0=0;t.addEventListener("pointerdown",e=>{x0=e.clientX;y0=e.clientY},{passive:true});
+t.addEventListener("pointerup",e=>{if(x0===null)return;const dx=e.clientX-x0,dy=e.clientY-y0;x0=null;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){show(i+(dx<0?1:-1));restart()}});
+hero.addEventListener("mouseenter",()=>{hover=true;stop()});hero.addEventListener("mouseleave",()=>{hover=false;start()});
+document.addEventListener("visibilitychange",()=>document.hidden?stop():start());
+show(0);start();})();
 </script>
 </body>
 </html>
