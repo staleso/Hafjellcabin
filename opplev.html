@@ -6,6 +6,8 @@
 <title>Opplev Hafjell – Hafjell Panorama</title>
 <meta name="description" content="Alpint, langrenn, familiebakker og sommeraktiviteter rett ved hytta på Hafjell Panorama.">
 <meta property="og:image" content="https://solems.no/img/hf-topp-utsikt.jpg">
+<link rel="icon" type="image/png" href="/img/favicon-64.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
@@ -25,7 +27,10 @@ body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 var(--body)}
 .tn-links>a[aria-current="page"]{color:var(--fg);background:var(--bg-2)}
 .topnav{position:relative;z-index:21;background:rgba(23,20,15,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .tn-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:18px;min-height:58px}
-.brand{font:400 1.15rem var(--display);color:var(--fg);text-decoration:none;white-space:nowrap;margin-right:auto}
+.brand{font:400 1.15rem var(--display);color:var(--fg);text-decoration:none;white-space:nowrap;margin-right:auto;display:inline-flex;align-items:center;gap:10px}
+.brand img{width:34px;height:34px;display:block}
+@media (max-width:460px){.bname{display:none}.brand img{width:40px;height:40px}}
+.flogo{display:flex;align-items:center;gap:14px}.flogo img{width:56px;height:56px;opacity:.9;flex:none}
 .tn-links{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
 .tn-links>a{color:#d7cfbf;text-decoration:none;font-size:.92rem;padding:8px 10px;border-radius:999px}
 .tn-links>a:hover{color:var(--fg);background:var(--bg-2)}
@@ -115,7 +120,7 @@ footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px sol
 <header class="bar">
   <nav class="topnav" aria-label="Hovedmeny">
     <div class="tn-inner gut">
-      <a class="brand" href="./">Hafjell Panorama</a>
+      <a class="brand" href="./"><img src="img/logo.png" alt="" width="34" height="34"><span class="bname">Hafjell Panorama</span></a>
       <nav class="lang" aria-label="Språk / Language"><a href="opplev.html" hreflang="no" lang="no" aria-current="page">NO</a><a href="en/opplev.html" hreflang="en" lang="en">EN</a><a href="da/opplev.html" hreflang="da" lang="da">DA</a></nav>
       <button type="button" class="tn-toggle" id="tnToggle" aria-expanded="false" aria-controls="tnLinks">Meny</button>
       <div class="tn-links" id="tnLinks">
@@ -216,7 +221,7 @@ footer{padding-block:28px;color:var(--muted);font-size:.85rem;border-top:1px sol
   </div>
 </section>
 
-<footer class="gut"><div class="wrap">Hafjell Panorama · Øyer, Innlandet</div></footer>
+<footer class="gut"><div class="wrap flogo"><img src="img/logo.png" alt="" width="56" height="56" loading="lazy"><span>Hafjell Panorama · Øyer, Innlandet</span></div></footer>
 <script>
 (function(){const t=document.getElementById("tnToggle"),l=document.getElementById("tnLinks");
 t.onclick=()=>{const o=l.classList.toggle("open");t.setAttribute("aria-expanded",o)};})();
