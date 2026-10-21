@@ -1,6 +1,6 @@
 // Google Analytics with consent. Loads GA only after the visitor accepts.
 (function () {
-  var GA_ID = ""; // e.g. "G-XXXXXXXXXX"
+  var GA_ID = "G-K1TLYJ7JVN"; // e.g. "G-XXXXXXXXXX"
   if (!GA_ID) return;
   var KEY = "hp-analytics";
   var lang = (document.documentElement.lang || "no").slice(0, 2);
